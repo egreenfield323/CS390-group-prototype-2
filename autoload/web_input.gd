@@ -2,7 +2,7 @@ extends Node
 # Based on https://github.com/godotengine/godot-proposals/issues/2526
 
 func _init():
-	if !OS.has_feature('JavaScript'):
+	if !OS.has_feature("web_ios") and !OS.has_feature("web_android"):
 		return
 	JavaScriptBridge.eval("""
 		var acceleration = { x: 0, y: 0, z: 0 }
@@ -37,4 +37,4 @@ func get_accelerometer() -> Vector3:
 
 
 func supports_js() -> bool:
-	return OS.has_feature("JavaScript")
+	return OS.has_feature("web_ios") or OS.has_feature("web_android")
