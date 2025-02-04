@@ -34,3 +34,7 @@ func get_accelerometer() -> Vector3:
 	var z = JavaScriptBridge.eval('acceleration.z')
 	
 	return Vector3(x, y, z)
+
+
+func supports_js() -> bool:
+	return OS.has_feature("JavaScript")
