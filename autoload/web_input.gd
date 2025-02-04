@@ -40,8 +40,8 @@ func supports_js() -> bool:
 	return OS.has_feature("web_ios") or OS.has_feature("web_android")
 
 
-func get_user_agent() -> String:
+func try_permission() -> String:
 	if !supports_js():
 		return "JS not supported."
 	else:
-		return JavaScriptBridge.eval("navigator.userAgent")
+		return JavaScriptBridge.eval("await DeviceOrientationEvent.requestPermission()")
