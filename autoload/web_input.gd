@@ -44,4 +44,4 @@ func try_permission() -> String:
 	if !supports_js():
 		return "JS not supported."
 	else:
-		return JavaScriptBridge.eval("await DeviceOrientationEvent.requestPermission()")
+		return JavaScriptBridge.eval("typeof DeviceOrientationEvent.requestPermission")
