@@ -9,6 +9,7 @@ func _ready() -> void:
 		func(args):
 			$VBox/UserAgent.text = str(args)
 	)
+	WebInput.try_permission()
 	$VBox/Support.text = SUPPORT_TEXT % WebInput.supports_js()
 
 func _process(delta: float) -> void:

@@ -28,8 +28,6 @@ func _init():
 			#registerMotionListener()
 		#}
 	#""", true)
-	var orientation = JavaScriptBridge.get_interface("DeviceOrientationEvent")
-	orientation.then(_js_callback)
 
 
 func register_accelerometer_listener() -> void:
@@ -55,4 +53,6 @@ func try_permission() -> String:
 	if !supports_js():
 		return "JS not supported."
 	else:
-		return JavaScriptBridge.eval("typeof DeviceOrientationEvent.requestPermission")
+		var orientation = JavaScriptBridge.get_interface("DeviceOrientationEvent")
+		orientation.then(_js_callback)
+		return ""
