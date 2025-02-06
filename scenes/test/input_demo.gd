@@ -18,7 +18,11 @@ func _on_cast_button_button_down() -> void:
 
 func _on_cast_button_button_up() -> void:
 	var cast_distance = WebInput.stop_cast()
-	$VBox/CastDistance.text = "Cast distance: " + str(cast_distance)
+	
+	var cast_accel = inverse_lerp(0, 120, cast_distance)
+	var casting_level = lerp(0, 10, cast_accel)
+	
+	$VBox/CastDistance.text = "Cast distance level: " + str(int(casting_level))
 
 
 func _on_request_motion_pressed() -> void:
