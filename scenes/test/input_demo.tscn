@@ -61,6 +61,10 @@ layout_mode = 2
 layout_mode = 2
 text = "Execute"
 
+[node name="EditText" type="Button" parent="VBox"]
+layout_mode = 2
+text = "Edit Text"
+
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(50, 50)
 scale = Vector2(0.5, 0.5)
@@ -68,3 +72,4 @@ texture = ExtResource("2_4scne")
 script = ExtResource("3_tj2gu")
 
 [connection signal="pressed" from="VBox/Execute" to="." method="_on_execute_pressed"]
+[connection signal="pressed" from="VBox/EditText" to="." method="_on_edit_text_pressed"]

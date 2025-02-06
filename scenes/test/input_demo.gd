@@ -18,3 +18,6 @@ func _process(delta: float) -> void:
 
 func _on_execute_pressed() -> void:
 	$VBox/Console.text = str(JavaScriptBridge.eval($VBox/Console.text))
+
+func _on_edit_text_pressed() -> void:
+	$VBox/Console.grab_focus()
