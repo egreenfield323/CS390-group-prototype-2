@@ -1,0 +1,67 @@
+[gd_scene load_steps=3 format=3 uid="uid://eercgrjx3idc"]
+
+[ext_resource type="Script" path="res://Fishes/fishObject.gd" id="1_t173a"]
+[ext_resource type="Texture2D" uid="uid://dc4u6kdsr2yjv" path="res://Assets/Fishing Game Pack/Fishing Game Pack/fish.png" id="2_ymnll"]
+
+[node name="Fish" type="Node2D" groups=["Fishes"]]
+script = ExtResource("1_t173a")
+
+[node name="BlueFish" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_ymnll")
+region_enabled = true
+region_rect = Rect2(4, 2, 27, 19)
+
+[node name="YellowFish" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_ymnll")
+region_enabled = true
+region_rect = Rect2(4, 33, 27, 19)
+
+[node name="BrownFish" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_ymnll")
+region_enabled = true
+region_rect = Rect2(37, 3, 37, 23)
+
+[node name="RedFish" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_ymnll")
+region_enabled = true
+region_rect = Rect2(37, 32, 37, 23)
+
+[node name="OrangeShrimp" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_ymnll")
+region_enabled = true
+region_rect = Rect2(81, 5, 25, 21)
+
+[node name="PurpleShrimp" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_ymnll")
+region_enabled = true
+region_rect = Rect2(81, 33, 25, 21)
+
+[node name="GhostFish" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_ymnll")
+region_enabled = true
+region_rect = Rect2(120, 2, 21, 14)
+
+[node name="BlueTetra" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_ymnll")
+region_enabled = true
+region_rect = Rect2(120, 50, 18, 15)
+
+[node name="RedTetra" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_ymnll")
+region_enabled = true
+region_rect = Rect2(120, 73, 18, 15)
+
+[node name="GoldFish" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_ymnll")
+region_enabled = true
+region_rect = Rect2(11, 61, 26, 26)
