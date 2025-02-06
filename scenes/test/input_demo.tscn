@@ -48,13 +48,23 @@ autowrap_mode = 3
 [node name="DemoVersion" type="Label" parent="VBox"]
 layout_mode = 2
 size_flags_vertical = 1
-text = "Demo Version: 2"
+text = "Demo Version: 3"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
+
+[node name="Console" type="TextEdit" parent="VBox"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+
+[node name="Execute" type="Button" parent="VBox"]
+layout_mode = 2
+text = "Execute"
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(50, 50)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_4scne")
 script = ExtResource("3_tj2gu")
+
+[connection signal="pressed" from="VBox/Execute" to="." method="_on_execute_pressed"]

@@ -15,4 +15,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var data := WebInput.get_accelerometer()
 	$VBox/Acellerometer.text = ACCELEROMETER_TEXT % [data.x, data.y, data.z]
-	
+
+func _on_execute_pressed() -> void:
+	$VBox/Console.text = str(JavaScriptBridge.eval($VBox/Console.text))
