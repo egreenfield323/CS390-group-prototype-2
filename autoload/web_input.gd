@@ -58,6 +58,7 @@ func supports_js() -> bool:
 
 
 func start_cast() -> void:
+	current_cast_max_acceleration = 0.0
 	casting = true
 
 
