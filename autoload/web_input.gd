@@ -42,3 +42,11 @@ func get_accelerometer() -> Vector3:
 
 func supports_js() -> bool:
 	return OS.has_feature("web_ios") or OS.has_feature("web_android")
+
+
+func start_cast() -> void:
+	pass
+
+
+func stop_cast() -> float:
+	return 0.0
