@@ -1,7 +1,20 @@
 extends Node
 # Based on https://github.com/godotengine/godot-proposals/issues/2526
 
-signal flags_updated(flags)
+var current_cast_max_acceleration := 0.0
+var casting := false
+
+
+func _process(delta: float) -> void:
+	if not casting:
+		return
+	
+	var acceleration := get_accelerometer()
+	
+	current_cast_max_acceleration = max(
+		acceleration,
+		current_cast_max_acceleration
+	)
 
 
 func request_access() -> void:
@@ -45,8 +58,9 @@ func supports_js() -> bool:
 
 
 func start_cast() -> void:
-	pass
+	casting = true
 
 
 func stop_cast() -> float:
-	return 0.0
+	casting = false
+	return current_cast_max_acceleration
