@@ -3,7 +3,7 @@ extends Node
 
 signal flags_updated(flags)
 
-var _js_callback = JavaScriptBridge.create_callback(func(args): flags_updated.emit(args))
+
 func _init():
 	if !supports_js():
 		return
@@ -30,9 +30,14 @@ func _init():
 	#""", true)
 
 
-func register_accelerometer_listener() -> void:
-	var window = JavaScriptBridge.get_interface("window")
-	window.ondevicemotion = _js_callback
+func request_access() -> String:
+	if !supports_js():
+		return "no support"
+	
+	var result = JavaScriptBridge.eval("""
+		await DeviceOrientationEvent.requestPermission()
+	""", true)
+	return str(result)
 
 
 func get_accelerometer() -> Vector3:
@@ -47,12 +52,3 @@ func get_accelerometer() -> Vector3:
 
 func supports_js() -> bool:
 	return OS.has_feature("web_ios") or OS.has_feature("web_android")
-
-
-func try_permission() -> String:
-	if !supports_js():
-		return "JS not supported."
-	else:
-		var orientation = JavaScriptBridge.get_interface("DeviceOrientationEvent")
-		orientation.then(_js_callback)
-		return ""
