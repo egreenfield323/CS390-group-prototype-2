@@ -11,5 +11,14 @@ func _process(delta: float) -> void:
 	var data := WebInput.get_accelerometer()
 	$VBox/Acellerometer.text = ACCELEROMETER_TEXT % [data.x, data.y, data.z]
 
-func _on_request_motion_pressed() -> void:
-	$VBox/Result.text = WebInput.request_access()
+
+func _on_cast_button_button_down() -> void:
+	WebInput.start_cast()
+	
+	pass
+
+func _on_cast_button_button_up() -> void:
+	var cast_distance = WebInput.stop_cast()
+	$VBox/CastDistance.text = str(cast_distance)
+	
+	pass

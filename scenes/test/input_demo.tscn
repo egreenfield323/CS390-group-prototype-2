@@ -48,6 +48,25 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
+[node name="CastButton" type="Button" parent="VBox"]
+layout_mode = 2
+text = "
+
+
+
+
+Cast
+
+
+
+
+"
+
+[node name="CastDistance" type="Label" parent="VBox"]
+layout_mode = 2
+text = "Cast: distance = 0.0"
+horizontal_alignment = 1
+
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(50, 50)
 scale = Vector2(0.5, 0.5)
@@ -55,3 +74,5 @@ texture = ExtResource("2_4scne")
 script = ExtResource("3_tj2gu")
 
 [connection signal="pressed" from="VBox/RequestMotion" to="." method="_on_request_motion_pressed"]
+[connection signal="button_down" from="VBox/CastButton" to="." method="_on_cast_button_button_down"]
+[connection signal="button_up" from="VBox/CastButton" to="." method="_on_cast_button_button_up"]
