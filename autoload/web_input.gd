@@ -1,20 +1,27 @@
 extends Node
 # Based on https://github.com/godotengine/godot-proposals/issues/2526
 
+signal hook_set
+
+const MIN_SET_HOOK_ACCELERATION = 10.0
+
 var current_cast_max_acceleration := 0.0
 var casting := false
+var biting := false
 
 
 func _process(delta: float) -> void:
-	if not casting:
-		return
-	
 	var acceleration := get_accelerometer()
+	if casting:
+		current_cast_max_acceleration = max(
+			acceleration.length(),
+			current_cast_max_acceleration
+		)
 	
-	current_cast_max_acceleration = max(
-		acceleration.length(),
-		current_cast_max_acceleration
-	)
+	if biting:
+		if acceleration.length() >= MIN_SET_HOOK_ACCELERATION:
+			hook_set.emit()
+			stop_bite()
 
 
 func request_access() -> void:
@@ -65,3 +72,11 @@ func start_cast() -> void:
 func stop_cast() -> float:
 	casting = false
 	return current_cast_max_acceleration
+
+
+func start_bite() -> void:
+	biting = true
+
+
+func stop_bite() -> void:
+	biting = false
