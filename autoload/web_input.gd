@@ -12,7 +12,7 @@ func _process(delta: float) -> void:
 	var acceleration := get_accelerometer()
 	
 	current_cast_max_acceleration = max(
-		acceleration,
+		acceleration.length(),
 		current_cast_max_acceleration
 	)
 
