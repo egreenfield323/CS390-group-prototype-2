@@ -1,8 +1,174 @@
-[gd_scene load_steps=4 format=3 uid="uid://bm4g4b5lyq4iq"]
+[gd_scene load_steps=9 format=3 uid="uid://bm4g4b5lyq4iq"]
 
 [ext_resource type="Script" path="res://scenes/test/input_demo.gd" id="1_gv1he"]
 [ext_resource type="Texture2D" uid="uid://cn7mcv8hhkd01" path="res://icon.svg" id="2_4scne"]
 [ext_resource type="Script" path="res://scenes/test/spinning_sprite.gd" id="3_tj2gu"]
+
+[sub_resource type="Animation" id="Animation_57ext"]
+resource_name = "no_bite"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BiteIndicator:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BiteIndicator:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 0.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BiteIndicator:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_quk1k"]
+resource_name = "biting"
+step = 0.3333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BiteIndicator:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9999),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(0.75, 0.75)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BiteIndicator:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3333, 0.6666, 0.9999),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.349066, 0.349066, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BiteIndicator:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.9999),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_egv4c"]
+resource_name = "hook_set"
+step = 0.3333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BiteIndicator:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.9999),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(1, 1, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BiteIndicator:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.75, 0.75), Vector2(0.9, 0.9), Vector2(0.5, 0.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BiteIndicator:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3333, 0.6666, 0.9999),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.174533, 0.174533, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_xhilb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BiteIndicator:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BiteIndicator:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 0.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BiteIndicator:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vo70g"]
+_data = {
+"RESET": SubResource("Animation_xhilb"),
+"biting": SubResource("Animation_quk1k"),
+"hook_set": SubResource("Animation_egv4c"),
+"no_bite": SubResource("Animation_57ext")
+}
 
 [node name="InputDemo" type="Control"]
 layout_mode = 3
@@ -67,12 +233,32 @@ layout_mode = 2
 text = "Cast distance = 0.0"
 horizontal_alignment = 1
 
+[node name="StartBite" type="Button" parent="VBox"]
+layout_mode = 2
+text = "Start Bite"
+
+[node name="StopBite" type="Button" parent="VBox"]
+layout_mode = 2
+text = "Stop Bite"
+
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(50, 50)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_4scne")
 script = ExtResource("3_tj2gu")
 
+[node name="BiteIndicator" type="Sprite2D" parent="."]
+position = Vector2(576, 500)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_4scne")
+
+[node name="BiteAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vo70g")
+}
+
 [connection signal="pressed" from="VBox/RequestMotion" to="." method="_on_request_motion_pressed"]
 [connection signal="button_down" from="VBox/CastButton" to="." method="_on_cast_button_button_down"]
 [connection signal="button_up" from="VBox/CastButton" to="." method="_on_cast_button_button_up"]
+[connection signal="pressed" from="VBox/StartBite" to="." method="_on_start_bite_pressed"]
+[connection signal="pressed" from="VBox/StopBite" to="." method="_on_stop_bite_pressed"]
