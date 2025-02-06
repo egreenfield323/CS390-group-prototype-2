@@ -34,10 +34,10 @@ func request_access() -> String:
 	if !supports_js():
 		return "no support"
 	
-	var result = JavaScriptBridge.eval("""
-		await DeviceOrientationEvent.requestPermission()
+	JavaScriptBridge.eval("""
+		DeviceOrientationEvent.requestPermission()
 	""", true)
-	return str(result)
+	return str("running...")
 
 
 func get_accelerometer() -> Vector3:
