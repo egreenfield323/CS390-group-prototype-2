@@ -33,9 +33,27 @@ func _init():
 func request_access() -> String:
 	if !supports_js():
 		return "no support"
-	
-	JavaScriptBridge.eval("""
-		DeviceOrientationEvent.requestPermission()
+	JavaScriptBridge.eval(
+	"""
+		var acceleration = { x: 0, y: 0, z: 0 }
+
+		function registerMotionListener() {
+			window.ondevicemotion = function(event) {
+				if (event.acceleration.x === null) return
+				acceleration.x = event.acceleration.x
+				acceleration.y = event.acceleration.y
+				acceleration.z = event.acceleration.z
+			}
+		}
+
+		if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+			DeviceOrientationEvent.requestPermission().then(function(state) {
+				if (state === 'granted') registerMotionListener()
+			})
+		}
+		else {
+			registerMotionListener()
+		}
 	""", true)
 	return str("running...")
 
