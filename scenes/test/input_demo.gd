@@ -19,6 +19,6 @@ func _on_cast_button_button_down() -> void:
 
 func _on_cast_button_button_up() -> void:
 	var cast_distance = WebInput.stop_cast()
-	$VBox/CastDistance.text = str(cast_distance)
+	$VBox/CastDistance.text = "Cast distance: " + str(cast_distance)
 	
 	pass
