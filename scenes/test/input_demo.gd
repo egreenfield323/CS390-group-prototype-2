@@ -7,7 +7,7 @@ const SUPPORT_TEXT = "JavaScript support: %s"
 func _ready() -> void:
 	$VBox/Support.text = SUPPORT_TEXT % WebInput.supports_js()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var data := WebInput.get_accelerometer()
 	$VBox/Acellerometer.text = ACCELEROMETER_TEXT % [data.x, data.y, data.z]
 

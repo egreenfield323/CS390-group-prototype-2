@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://cn7mcv8hhkd01" path="res://icon.svg" id="2_4scne"]
 [ext_resource type="Script" path="res://scenes/test/spinning_sprite.gd" id="3_tj2gu"]
 
-[sub_resource type="Animation" id="Animation_57ext"]
-resource_name = "no_bite"
+[sub_resource type="Animation" id="Animation_xhilb"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -123,8 +123,8 @@ tracks/2/keys = {
 "values": [0.0, -0.174533, 0.174533, 0.0]
 }
 
-[sub_resource type="Animation" id="Animation_xhilb"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_57ext"]
+resource_name = "no_bite"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
