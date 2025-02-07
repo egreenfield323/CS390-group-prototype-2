@@ -18,7 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 DevInputs="*res://scenes/ui/dev_inputs.tscn"
-WebInput="*res://autoload/web_input.gd"
+WebInput="*res://independant_scripts/autoload/web_input.gd"
 
 [input]
 
