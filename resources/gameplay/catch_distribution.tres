@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="CatchDistributions" load_steps=6 format=3 uid="uid://d22tn64rv8pjn"]
+
+[ext_resource type="Script" path="res://independant_scripts/resources/catch_distribution.gd" id="1_dg3tb"]
+[ext_resource type="Script" path="res://independant_scripts/resources/distribution.gd" id="1_ym8fx"]
+[ext_resource type="Script" path="res://independant_scripts/resources/gaussian_distribution.gd" id="2_1xtc5"]
+
+[sub_resource type="Resource" id="Resource_kt37w"]
+script = ExtResource("2_1xtc5")
+mean = 50.0
+standard_deviation = 5.0
+area = 1.0
+
+[sub_resource type="Resource" id="Resource_n4gsb"]
+script = ExtResource("2_1xtc5")
+mean = 25.0
+standard_deviation = 10.0
+area = 1.0
+
+[resource]
+script = ExtResource("1_dg3tb")
+fish_types = Array[int]([0, 1])
+dists = Array[ExtResource("1_ym8fx")]([SubResource("Resource_kt37w"), SubResource("Resource_n4gsb")])
