@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqnqkyg5t2c24"]
+
+[ext_resource type="Script" path="res://scenes/test/catching_test.gd" id="1_botw5"]
+[ext_resource type="Resource" path="res://resources/gameplay/test_catch_probabilities.tres" id="2_qkw88"]
+
+[node name="Node" type="Node"]
+script = ExtResource("1_botw5")
+catch_probabilities = ExtResource("2_qkw88")
