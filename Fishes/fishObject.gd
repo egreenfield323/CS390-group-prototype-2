@@ -62,23 +62,24 @@ func _weighted_random_choice(propability_distribution: Array) -> int:
 func _change_fish_sprite(cast_distance: int) -> void:
 	var probability_distribution = _get_probability_set(cast_distance)
 	var fish_sprite_index = _weighted_random_choice(probability_distribution)
-	if fish_sprite_index == 0:
-		$BlueTetra.visible = true;
-	elif fish_sprite_index == 1:
-		$RedTetra.visible = true;
-	elif fish_sprite_index == 2:
-		$OrangeShrimp.visible = true;
-	elif fish_sprite_index == 3:
-		$PurpleShrimp.visible = true;
-	elif fish_sprite_index == 4:
-		$GhostFish.visible = true;
-	elif fish_sprite_index == 5:
-		$BlueFish.visible = true;
-	elif fish_sprite_index == 6:
-		$YellowFish.visible = true;
-	elif fish_sprite_index == 7:
-		$BrownFish.visible = true;
-	elif fish_sprite_index == 8:
-		$RedFish.visible = true;
-	else: # sprite_index == 9
-		$GoldFish.visible = true;
+	match fish_sprite_index:
+		0:
+			$BlueTetra.visible = true;
+		1:
+			$RedTetra.visible = true;
+		2:
+			$OrangeShrimp.visible = true;
+		3:
+			$PurpleShrimp.visible = true;
+		4:
+			$GhostFish.visible = true;
+		5:
+			$BlueFish.visible = true;
+		6:
+			$YellowFish.visible = true;
+		7:
+			$BrownFish.visible = true;
+		8:
+			$RedFish.visible = true;
+		9:
+			$GoldFish.visible = true;
