@@ -117,8 +117,6 @@ func _set_fish_types(new_fish_types: Array[int]) -> void:
 		fish_types = new_fish_types
 		return
 	
-	print("Fish: " + str(fish_types) + " -> " + str(new_fish_types))
-	
 	if new_fish_types.size() == 0:
 		push_warning("Must have at least one fish type.")
 		return
@@ -135,7 +133,6 @@ func _set_partitions(new_partitions: Array[ProbabilityPartition]) -> void:
 		partitions = new_partitions
 		return
 	
-	print("Partitions: " + str(partitions) + " -> " + str(new_partitions))
 	_partition_distances_size_mutable = true
 	if new_partitions.size() > partitions.size():
 		new_partitions[new_partitions.size() - 1] = ProbabilityPartition.new()

@@ -11,12 +11,12 @@ probabilities = Array[float]([0.8, 0.2, 0.0])
 script = ExtResource("1_6e6hp")
 probabilities = Array[float]([0.0, 0.8, 0.2])
 
-[sub_resource type="Resource" id="Resource_xobni"]
+[sub_resource type="Resource" id="Resource_poqk0"]
 script = ExtResource("1_6e6hp")
 probabilities = Array[float]([0.0, 0.4, 0.6])
 
 [resource]
 script = ExtResource("2_4bksh")
 fish_types = Array[int]([0, 1, 2])
-partitions = Array[ExtResource("1_6e6hp")]([SubResource("Resource_nqjy3"), SubResource("Resource_iuvbw"), SubResource("Resource_xobni")])
+partitions = Array[ExtResource("1_6e6hp")]([SubResource("Resource_nqjy3"), SubResource("Resource_iuvbw"), SubResource("Resource_poqk0")])
 partition_distances = Array[float]([25.0, 75.0, 100.0])
