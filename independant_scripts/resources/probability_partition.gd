@@ -6,6 +6,9 @@ const NORMALIZED_SUM = 1.0
 
 @export_range(0.0, NORMALIZED_SUM) var probabilities: Array[float] = [] : set = _set_probabilities
 
+var enforced_size := -1 : set = _set_enforced_size
+var _size_locked := false
+
 
 func _set_probabilities(new_probabilities: Array[float]) -> void:
 	# In case a new array with the same contents is somehow assigned:
@@ -20,6 +23,9 @@ func _set_probabilities(new_probabilities: Array[float]) -> void:
 	# New element appended to end of the array. Should initialize to zero, which is only an issue
 	# if the sum of the probabilities is 0.
 	if new_probabilities.size() > probabilities.size():
+		if _size_locked:
+			push_warning("Cannot resize partition, size currently locked to %d" % enforced_size)
+			return
 		if _sum(new_probabilities) == 0.0:
 			new_probabilities[new_probabilities.size() - 1] = NORMALIZED_SUM
 		probabilities = new_probabilities
@@ -30,17 +36,22 @@ func _set_probabilities(new_probabilities: Array[float]) -> void:
 	# value, we will add it to the previous value instead. Additionally, if it was the only value,
 	# we will simply add it back.
 	if new_probabilities.size() < probabilities.size():
+		if _size_locked:
+			push_warning("Cannot resize partition, size currently locked to %d" % enforced_size)
+			return
 		if new_probabilities.size() == 0:
 			new_probabilities.append(NORMALIZED_SUM)
 			probabilities = new_probabilities
 			return
 		
-		var index_added_to := _find_differing_index(probabilities, new_probabilities)
+		var differing_index := _find_differing_index(probabilities, new_probabilities)
+		var index_to_add = differing_index
 		
-		if index_added_to == -1:
-			index_added_to = 0
+		if differing_index == -1:
+			differing_index = new_probabilities.size() - 1
+			index_to_add = probabilities.size() - 1
 		
-		new_probabilities[index_added_to] += probabilities[index_added_to - 1]
+		new_probabilities[differing_index] += probabilities[index_to_add]
 		probabilities = new_probabilities
 		return
 	
@@ -93,7 +104,7 @@ func _find_differing_index(a: Array, b: Array) -> int:
 		longer = b
 		shorter = a
 	
-	var differing_index := shorter.size()
+	var differing_index := -1
 	
 	for index in range(shorter.size()):
 		var shorter_element = shorter[index]
@@ -118,18 +129,45 @@ func _get_modify_order(array_size: int, index_modified: int) -> Array[int]:
 	
 	while (previous != 0 or push_up):
 		if push_up:
-			var next := previous + 1
-			if next >= array_size:
+			var next_up := previous + 1
+			if next_up >= array_size:
 				push_up = false
 				previous = index_modified
 				continue
 			
-			order.append(next)
-			previous = next
+			order.append(next_up)
+			previous = next_up
 			continue
 		
-		var next := previous - 1
-		order.append(next)
-		previous = next
+		var next_down := previous - 1
+		order.append(next_down)
+		previous = next_down
 	
 	return order
+
+
+func _set_enforced_size(new_enforced_size: int) -> void:
+	if new_enforced_size == 0:
+		new_enforced_size = 1
+		push_warning("Cannot force size of 0 on probability partition, using size of 1.")
+	
+	if new_enforced_size < 0:
+		_size_locked = false
+		enforced_size = new_enforced_size
+		return
+	
+	_size_locked = false
+	var size_difference := new_enforced_size - probabilities.size()
+	if size_difference > 0:
+		for _index in range(size_difference):
+			var new_probabilities = probabilities.duplicate()
+			new_probabilities.append(0.0)
+			_set_probabilities(new_probabilities)
+	elif size_difference < 0:
+		for _index in range(-size_difference):
+			var new_probabilities = probabilities.duplicate()
+			new_probabilities.pop_back()
+			_set_probabilities(new_probabilities)
+	
+	enforced_size = new_enforced_size
+	_size_locked = true

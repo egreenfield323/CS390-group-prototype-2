@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="CatchDistributions" load_steps=6 format=3 uid="uid://b0welj3atobyq"]
+
+[ext_resource type="Script" path="res://independant_scripts/resources/probability_partition.gd" id="1_6e6hp"]
+[ext_resource type="Script" path="res://independant_scripts/resources/catch_distribution.gd" id="2_4bksh"]
+
+[sub_resource type="Resource" id="Resource_nqjy3"]
+script = ExtResource("1_6e6hp")
+probabilities = Array[float]([0.8, 0.2, 0.0])
+
+[sub_resource type="Resource" id="Resource_iuvbw"]
+script = ExtResource("1_6e6hp")
+probabilities = Array[float]([0.0, 0.8, 0.2])
+
+[sub_resource type="Resource" id="Resource_xobni"]
+script = ExtResource("1_6e6hp")
+probabilities = Array[float]([0.0, 0.4, 0.6])
+
+[resource]
+script = ExtResource("2_4bksh")
+fish_types = Array[int]([0, 1, 2])
+partitions = Array[ExtResource("1_6e6hp")]([SubResource("Resource_nqjy3"), SubResource("Resource_iuvbw"), SubResource("Resource_xobni")])
+partition_distances = Array[float]([25.0, 75.0, 100.0])
