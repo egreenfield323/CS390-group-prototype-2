@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://bd1yvvstrknye"]
+
+[ext_resource type="Script" path="res://scenes/test/fish_shadow_test.gd" id="1_gmj1y"]
+[ext_resource type="PackedScene" uid="uid://cm223y6l1j46q" path="res://scenes/fish/fish_shadow.tscn" id="1_o6d2s"]
+[ext_resource type="Texture2D" uid="uid://cn7mcv8hhkd01" path="res://icon.svg" id="2_lle5c"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nrphu"]
+radius = 33.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_w8dj8"]
+vertices = PackedVector2Array(1141.01, 10.9609, 1141.98, 635.023, 10.9531, 637.969, 8.03906, 7.03125)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-2, -3, 1151, 1, 1152, 645, 1, 648)])
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_gmj1y")
+
+[node name="FishShadow" parent="." node_paths=PackedStringArray("HOOK") instance=ExtResource("1_o6d2s")]
+position = Vector2(333, 103)
+HOOK = NodePath("../hook")
+
+[node name="hook" type="RigidBody2D" parent="."]
+position = Vector2(621, 451)
+gravity_scale = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="hook"]
+position = Vector2(-1, 0.999996)
+scale = Vector2(0.40625, 0.40625)
+texture = ExtResource("2_lle5c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hook"]
+shape = SubResource("CircleShape2D_nrphu")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_w8dj8")
+metadata/_edit_lock_ = true
+
+[connection signal="bite_hook" from="FishShadow" to="." method="_on_fish_shadow_bite_hook"]

@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://cm223y6l1j46q"]
+
+[ext_resource type="Script" path="res://scenes/fish/fish_shadow.gd" id="1_dtt6a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gv4jx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d7b2h"]
+size = Vector2(40, 40)
+
+[node name="FishShadow" type="CharacterBody2D"]
+script = ExtResource("1_dtt6a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gv4jx")
+disabled = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_d7b2h")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.643137, 0.254902, 0.141176)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="MoveTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="StopTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
+[connection signal="timeout" from="StopTimer" to="." method="_on_stop_timer_timeout"]
