@@ -1,9 +1,52 @@
-[gd_scene load_steps=2 format=3 uid="uid://ca053xlmm15oj"]
+[gd_scene load_steps=10 format=3 uid="uid://ca053xlmm15oj"]
 
 [ext_resource type="Script" path="res://scenes/main_scenes/main.gd" id="1_7ewth"]
+[ext_resource type="Script" path="res://scenes/main_scenes/game_state_machine.gd" id="2_8yytw"]
+[ext_resource type="Texture2D" uid="uid://cn7mcv8hhkd01" path="res://icon.svg" id="2_kd644"]
+[ext_resource type="Script" path="res://scenes/main_scenes/states/casting.gd" id="3_bg48q"]
+[ext_resource type="Script" path="res://scenes/main_scenes/states/awaiting_bite.gd" id="4_4pna0"]
+[ext_resource type="PackedScene" uid="uid://bet1ebge4k8uj" path="res://scenes/ui/ui.tscn" id="4_xuen3"]
+[ext_resource type="PackedScene" uid="uid://bxm35o0mkuqdw" path="res://scenes/bobber.tscn" id="5_ndfyd"]
+[ext_resource type="Script" path="res://scenes/main_scenes/states/biting.gd" id="5_sa70k"]
+[ext_resource type="Script" path="res://scenes/main_scenes/states/fish_hooked.gd" id="6_nced1"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_7ewth")
 
-[node name="Pull_Timer" type="Timer" parent="."]
+[node name="States" type="Node" parent="."]
+script = ExtResource("2_8yytw")
+
+[node name="Casting" type="Node" parent="States"]
+script = ExtResource("3_bg48q")
+
+[node name="AwaitingBite" type="Node" parent="States"]
+script = ExtResource("4_4pna0")
+
+[node name="Biting" type="Node" parent="States"]
+script = ExtResource("5_sa70k")
+
+[node name="FishHooked" type="Node" parent="States"]
+script = ExtResource("6_nced1")
+
+[node name="ShowingReward" type="Node" parent="States"]
+
+[node name="PullTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Water" type="Sprite2D" parent="."]
+modulate = Color(0.0668142, 0.192864, 0.358876, 1)
+position = Vector2(-239, 52)
+scale = Vector2(3.74219, 5.28125)
+texture = ExtResource("2_kd644")
+centered = false
+
+[node name="Player" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_kd644")
+
+[node name="Camera" type="Camera2D" parent="Player"]
+offset = Vector2(0, 300)
+
+[node name="Bobber" parent="." instance=ExtResource("5_ndfyd")]
+
+[node name="UI" parent="." instance=ExtResource("4_xuen3")]

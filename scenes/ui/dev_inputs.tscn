@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://scenes/ui/dev_inputs/dev_inputs.gd" id="1_1pwaj"]
 
 [node name="DevInputs" type="CanvasLayer"]
+layer = 2
 script = ExtResource("1_1pwaj")
 
 [node name="Margin" type="MarginContainer" parent="."]
@@ -50,6 +51,6 @@ custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 text = "Set Hook"
 
-[connection signal="value_changed" from="Margin/VBox/CastAcceleration/Slider" to="Margin/VBox/CastAcceleration" method="_on_slider_value_changed"]
 [connection signal="value_changed" from="Margin/VBox/CastAcceleration/Slider" to="." method="_cast_acceleration_updated"]
+[connection signal="value_changed" from="Margin/VBox/CastAcceleration/Slider" to="Margin/VBox/CastAcceleration" method="_on_slider_value_changed"]
 [connection signal="pressed" from="Margin/VBox/SetHook" to="." method="_set_hook_pressed"]
