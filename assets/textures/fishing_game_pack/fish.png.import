@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vdk3fj0sl6wb"
-path="res://.godot/imported/cast bobbin Sheet.png-0f913d543f0691b82c6a31b5ebb1c8b1.ctex"
+uid="uid://dc4u6kdsr2yjv"
+path="res://.godot/imported/fish.png-067219bf07a4ef6d8d4ff92857590762.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Fishing Game Pack/Fishing Game Pack/cast bobbin Sheet.png"
-dest_files=["res://.godot/imported/cast bobbin Sheet.png-0f913d543f0691b82c6a31b5ebb1c8b1.ctex"]
+source_file="res://assets/textures/fishing_game_pack/fish.png"
+dest_files=["res://.godot/imported/fish.png-067219bf07a4ef6d8d4ff92857590762.ctex"]
 
 [params]
 

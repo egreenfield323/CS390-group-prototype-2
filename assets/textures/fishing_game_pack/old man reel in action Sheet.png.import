@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://14wcyq5nks6l"
-path="res://.godot/imported/background.png-761c59b40bac5ee1711e66867b9fb056.ctex"
+uid="uid://bvfkm44hkrg0a"
+path="res://.godot/imported/old man reel in action Sheet.png-32292bf689508c4a086c6be87d8a0cbd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Fishing Game Pack/Fishing Game Pack/background.png"
-dest_files=["res://.godot/imported/background.png-761c59b40bac5ee1711e66867b9fb056.ctex"]
+source_file="res://assets/textures/fishing_game_pack/old man reel in action Sheet.png"
+dest_files=["res://.godot/imported/old man reel in action Sheet.png-32292bf689508c4a086c6be87d8a0cbd.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpfr54j8rdr7w"
-path="res://.godot/imported/fisherman.png-ef0677b90351b5ca26bfdc58af762d93.ctex"
+uid="uid://bi2ui1ie7s1oy"
+path="res://.godot/imported/idle in water-Sheet.png-335b4eb388ae8bc389227652b0333452.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Fishing Game Pack/Fishing Game Pack/fisherman.png"
-dest_files=["res://.godot/imported/fisherman.png-ef0677b90351b5ca26bfdc58af762d93.ctex"]
+source_file="res://assets/textures/fishing_game_pack/idle in water-Sheet.png"
+dest_files=["res://.godot/imported/idle in water-Sheet.png-335b4eb388ae8bc389227652b0333452.ctex"]
 
 [params]
 

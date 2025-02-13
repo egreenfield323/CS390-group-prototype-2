@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://eercgrjx3idc"]
 
-[ext_resource type="Script" path="res://Fishes/fishObject.gd" id="1_t173a"]
-[ext_resource type="Texture2D" uid="uid://dc4u6kdsr2yjv" path="res://Assets/Fishing Game Pack/Fishing Game Pack/fish.png" id="2_ymnll"]
+[ext_resource type="Script" path="res://scenes/fish/fishObject.gd" id="1_t173a"]
+[ext_resource type="Texture2D" uid="uid://dc4u6kdsr2yjv" path="res://assets/textures/fishing_game_pack/fish.png" id="2_ymnll"]
 
 [node name="Fish" type="Node2D" groups=["Fishes"]]
 position = Vector2(100, 54)

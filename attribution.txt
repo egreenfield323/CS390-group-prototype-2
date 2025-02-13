@@ -1,0 +1,13 @@
+Asset Name:
+	Files
+	Author
+	License
+	Link
+	Modification
+
+Old Man Likes to Fish
+	res://assets/textures/fishing_game_pack/*
+	Danger Goose
+	None, stated as free to use without credit
+	https://danger-goose.itch.io/old-man-likes-to-fish-asset-pack
+	No Modification
