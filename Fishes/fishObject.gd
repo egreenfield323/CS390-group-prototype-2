@@ -2,16 +2,14 @@ extends Node2D
 
 @export var cast_distance := 0
 
+var fish_data = {}
+
 var fish_dict = {
-	"fish_name": "",
-	"species": "",
-	"worth": 0,
-	"rarity": 0,
-	"spawn_chance": 0.0,
-	"distance": 0.0,
-	"weight": 0.0,
-	"difficulty": 0,
-	"caught": false,
+	"type": "",
+	"value": 0,
+	"rarity": "",
+	"weight_range": [],
+	"difficulty": []
 }
 
 # Order of Fish Rarity - Tetra, Shrimp, Ghost, Basic Fish, Gold Fish
@@ -25,7 +23,8 @@ var fish_distribution = [
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	_change_fish_sprite(cast_distance)
+	#_change_fish_sprite(cast_distance)
+	set_fish_info(randi_range(0,9))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -83,3 +82,29 @@ func _change_fish_sprite(cast_distance: int) -> void:
 			$RedFish.visible = true;
 		9:
 			$GoldFish.visible = true;
+
+func load_fish_data():
+	var file = "res://Fishes/fishtypes.json"
+	var json_as_text = FileAccess.get_file_as_string(file)
+	var json_as_dict = JSON.parse_string(json_as_text)
+	
+	fish_data = json_as_dict
+
+func set_fish_info(fish_index):
+	if fish_data.is_empty():
+		load_fish_data()
+	
+	var fish = fish_data["fish"][fish_index]
+	
+	var sprite = $Sprite2D
+	sprite.texture = load(fish["sprite"])
+	
+	var sr = fish["sprite_region"]
+	sprite.region_enabled = true
+	sprite.region_rect = Rect2(sr[0], sr[1], sr[2], sr[3])
+	
+	for key in fish_dict:
+		if key in fish:
+			fish_dict[key] = fish[key]
+	
+	print(fish_dict)

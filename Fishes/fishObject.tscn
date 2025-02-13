@@ -4,7 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://dc4u6kdsr2yjv" path="res://Assets/Fishing Game Pack/Fishing Game Pack/fish.png" id="2_ymnll"]
 
 [node name="Fish" type="Node2D" groups=["Fishes"]]
+position = Vector2(100, 54)
 script = ExtResource("1_t173a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+region_enabled = true
 
 [node name="BlueTetra" type="Sprite2D" parent="."]
 visible = false
