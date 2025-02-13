@@ -7,6 +7,8 @@ extends CharacterBody2D
 @export var ACCEL := 5
 @export var DECEL := 5
 
+signal bite_hook
+
 var target_position
 var moving := false
 
@@ -32,6 +34,7 @@ func stop_moving() -> void: moving = false
 func start_moving() -> void: moving = true
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
+	bite_hook.emit()
 	stop_moving()
 	target_position = Vector2.ZERO
 	body.queue_free()
