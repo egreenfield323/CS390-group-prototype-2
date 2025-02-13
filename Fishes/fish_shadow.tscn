@@ -36,7 +36,13 @@ color = Color(0, 0.643137, 0.254902, 0.141176)
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [node name="MoveTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
 
-[node name="StillTimer" type="Timer" parent="."]
+[node name="StopTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
+[connection signal="timeout" from="StopTimer" to="." method="_on_stop_timer_timeout"]
