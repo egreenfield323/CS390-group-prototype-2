@@ -3,11 +3,12 @@ extends State
 const MIN_BITE_TIME = 2.5
 const MAX_BITE_TIME = 5.0
 
-var timer: Timer = Timer.new()
+var timer: Timer = null
 
 
 func enter() -> void:
 	state_machine.game.trigger_bite()
+	timer = Timer.new()
 	timer.one_shot = true
 	process_mode = PROCESS_MODE_INHERIT
 	add_child(timer)
@@ -40,4 +41,5 @@ func _bite_timeout() -> void:
 
 
 func _on_hook_set() -> void:
+	print("Hooked")
 	state_machine.change_state_to(Game.States.FISH_HOOKED)
