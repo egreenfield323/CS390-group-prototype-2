@@ -12,8 +12,11 @@ enum States {
 const MIN_ACELLERATION = 0.0
 const MAX_ACELLERATION = 120.0
 
-const MIN_DISTANCE = 0.0
+const MIN_DISTANCE = 20.0
 const MAX_DISTANCE = 100.0
+
+const MIN_LINE_TENSION = 0.0
+const MAX_LINE_TENSION = 100.0
 
 const MAX_DIFFICULTY = 10.0
 const MIN_DIFFICULTY = 0.0
@@ -32,6 +35,8 @@ const MAX_PULLS = 20
 @onready var ui := $UI
 
 var current_cast_distance := 0.0
+var bobber_distance := 0.0 : set = _set_bobber_distance
+var line_tension := 50.0 : set = _set_line_tension
 
 
 # Called when the node enters the scene tree for the first time.
@@ -45,23 +50,41 @@ static func acceleration_to_distance(acceleration: float) -> float:
 
 
 func be_ready_for_casting() -> void:
+	$Bobber.clear()
 	ui.enable_casting()
 
 
 func trigger_cast(distance: float, call_on_finished: Callable) -> void:
 	$Bobber.cast(distance)
-	$Bobber.cast_finished.connect(call_on_finished)
+	# Again, disconnecting after recieving the signal would be ideal.
+	if not $Bobber.cast_finished.is_connected(call_on_finished):
+		$Bobber.cast_finished.connect(call_on_finished)
+	current_cast_distance = distance
 
 
 func trigger_fish_swarm(call_when_done: Callable) -> void:
-	# Ideally we would disconnect this once the signal is recieved once.
-	$FishShadows.fish_bite.connect(call_when_done)
+	# Ideally this would disconnect when this signal is recieved, but I can't get
+	# that to work out.
+	if not $FishShadows.fish_bite.is_connected(call_when_done):
+		$FishShadows.fish_bite.connect(call_when_done)
 	$FishShadows.start_spawning_fish()
 	$Bobber.trigger_idle_anim()
+	bobber_distance = current_cast_distance
 
 
 func trigger_bite() -> void:
 	$Bobber.trigger_biting_anim()
+
+
+func enable_reeling() -> void:
+	ui.enable_reeling()
+	ui.show_line_tension()
+	line_tension = (MIN_LINE_TENSION + MAX_LINE_TENSION) / 2.0
+
+
+func disable_reeling() -> void:
+	ui.disable_reeling()
+	ui.hide_line_tension()
 
 
 func catch_event(fish_difficulty: float) -> void:
@@ -72,3 +95,13 @@ func catch_event(fish_difficulty: float) -> void:
 		
 		
 		pass
+
+
+func _set_line_tension(new_line_tension: float) -> void:
+	line_tension = clampf(new_line_tension, MIN_LINE_TENSION, MAX_LINE_TENSION)
+	ui.set_line_tension(new_line_tension)
+
+
+func _set_bobber_distance(new_bobber_distance: float) -> void:
+	bobber_distance = clampf(new_bobber_distance, 0.0, MAX_DISTANCE)
+	$Bobber.reel_to(new_bobber_distance)

@@ -27,6 +27,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("2_o4f0u")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+target_desired_distance = 25.0
 
 [node name="MoveTimer" type="Timer" parent="."]
 one_shot = true

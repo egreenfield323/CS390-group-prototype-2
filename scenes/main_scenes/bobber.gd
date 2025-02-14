@@ -47,9 +47,11 @@ func reel_to(distance: float) -> void:
 
 
 func _distance_to_pixels(distance: float) -> float:
+	# Zero is used instead of MIN_DISTANCE because we want the player to have minimum casting
+	# distance, but the fish must always be reeled to distance 0.0 to be considered caught.
 	return remap(
 		distance,
-		Game.MIN_DISTANCE,
+		0.0,
 		Game.MAX_DISTANCE,
 		MIN_PIXELS_ON_CAST,
 		MAX_PIXELS_ON_CAST

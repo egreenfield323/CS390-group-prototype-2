@@ -1,7 +1,32 @@
-[gd_scene load_steps=3 format=3 uid="uid://bet1ebge4k8uj"]
+[gd_scene load_steps=7 format=3 uid="uid://bet1ebge4k8uj"]
 
 [ext_resource type="Theme" uid="uid://cl7rjoolrg5ji" path="res://resources/default.tres" id="1_2f4iu"]
 [ext_resource type="Script" path="res://scenes/ui/ui.gd" id="1_a70a8"]
+[ext_resource type="Script" path="res://scenes/ui/line_tension_indicator.gd" id="3_ec8tn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ugine"]
+bg_color = Color(0.219501, 0.219501, 0.219501, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+anti_aliasing_size = 0.2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hfwwg"]
+bg_color = Color(0, 1, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing_size = 0.2
+
+[sub_resource type="Gradient" id="Gradient_chtfh"]
+offsets = PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 0, 0, 1)
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_a70a8")
@@ -19,10 +44,67 @@ theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 
 [node name="CastButton" type="Button" parent="Margin"]
+visible = false
 custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
 size_flags_vertical = 8
 text = "Hold to cast"
 
+[node name="ReelButton" type="Button" parent="Margin"]
+visible = false
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+size_flags_vertical = 8
+text = "Hold to Reel"
+
+[node name="LineTension" type="ProgressBar" parent="Margin"]
+visible = false
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_ugine")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hfwwg")
+value = 50.0
+show_percentage = false
+script = ExtResource("3_ec8tn")
+value_gradient = SubResource("Gradient_chtfh")
+
+[node name="FishCaught" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.160784, 0.160784, 0.160784, 0.733333)
+
+[node name="Margin" type="MarginContainer" parent="FishCaught"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_2f4iu")
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBox" type="VBoxContainer" parent="FishCaught/Margin"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="FishCaught/Margin/VBox"]
+layout_mode = 2
+text = "You caught a fish!"
+horizontal_alignment = 1
+
+[node name="Continue" type="Button" parent="FishCaught/Margin/VBox"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+text = "Continue"
+
 [connection signal="button_down" from="Margin/CastButton" to="." method="_on_cast_button_down"]
 [connection signal="button_up" from="Margin/CastButton" to="." method="_on_cast_button_released"]
+[connection signal="button_down" from="Margin/ReelButton" to="." method="_on_reel_button_button_down"]
+[connection signal="button_up" from="Margin/ReelButton" to="." method="_on_reel_button_button_up"]
+[connection signal="value_changed" from="Margin/LineTension" to="Margin/LineTension" method="_on_value_changed"]
+[connection signal="pressed" from="FishCaught/Margin/VBox/Continue" to="." method="_on_continue_pressed"]

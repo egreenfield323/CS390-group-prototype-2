@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ca053xlmm15oj"]
+[gd_scene load_steps=16 format=3 uid="uid://ca053xlmm15oj"]
 
 [ext_resource type="Script" path="res://scenes/main_scenes/main.gd" id="1_7ewth"]
 [ext_resource type="Script" path="res://scenes/main_scenes/game_state_machine.gd" id="2_8yytw"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bxm35o0mkuqdw" path="res://scenes/bobber.tscn" id="5_ndfyd"]
 [ext_resource type="Script" path="res://scenes/main_scenes/states/biting.gd" id="5_sa70k"]
 [ext_resource type="Script" path="res://scenes/main_scenes/states/fish_hooked.gd" id="6_nced1"]
+[ext_resource type="Script" path="res://scenes/main_scenes/states/showing_reward.gd" id="7_l7omh"]
 [ext_resource type="Texture2D" uid="uid://n08eo36w3ve7" path="res://assets/textures/fishing_game_pack/background_extended.png" id="7_nl4al"]
 [ext_resource type="Texture2D" uid="uid://bi2ui1ie7s1oy" path="res://assets/textures/fishing_game_pack/idle in water-Sheet.png" id="8_2cbgj"]
 [ext_resource type="Script" path="res://scenes/fish/fish_shadows.gd" id="9_0gufs"]
@@ -41,6 +42,9 @@ script = ExtResource("5_sa70k")
 script = ExtResource("6_nced1")
 
 [node name="ShowingReward" type="Node" parent="States"]
+script = ExtResource("7_l7omh")
+
+[node name="Reseting" type="Node" parent="States"]
 
 [node name="PullTimer" type="Timer" parent="."]
 one_shot = true
