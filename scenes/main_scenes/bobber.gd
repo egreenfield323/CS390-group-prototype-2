@@ -2,10 +2,12 @@ extends Sprite2D
 
 signal cast_finished
 
-const MIN_PIXELS_ON_CAST = 75
-const MAX_PIXELS_ON_CAST = 650
+const MIN_PIXELS_ON_CAST = 25
+const MAX_PIXELS_ON_CAST = 515
 
 const CAST_ANIM_TIME = 1.0
+
+@onready var initial_position = position
 
 
 func _ready() -> void:
@@ -18,7 +20,7 @@ func cast(distance: float) -> void:
 	show()
 	var tween := create_tween()
 	tween.set_ease(Tween.EASE_OUT)
-	tween.tween_property(self, "position", Vector2.DOWN * pixels, CAST_ANIM_TIME)
+	tween.tween_property(self, "position", initial_position + Vector2.DOWN * pixels, CAST_ANIM_TIME)
 	tween.finished.connect(
 		func():
 			cast_finished.emit()
@@ -27,14 +29,11 @@ func cast(distance: float) -> void:
 
 func clear() -> void:
 	hide()
-	position = Vector2.ZERO
+	position = initial_position
 
 
-func trigger_fish_swarm_anim(call_when_done: Callable) -> void:
-	$Animation.animation_finished.connect(
-		func(_anim_name: String): call_when_done.call()
-	)
-	$Animation.play("fish_swarm")
+func trigger_idle_anim() -> void:
+	$Animation.play("idle")
 
 
 func trigger_biting_anim() -> void:
@@ -44,7 +43,7 @@ func trigger_biting_anim() -> void:
 # Call inside _process
 func reel_to(distance: float) -> void:
 	var pixels := _distance_to_pixels(distance)
-	position.y = pixels
+	position.y = pixels + initial_position.y
 
 
 func _distance_to_pixels(distance: float) -> float:

@@ -1,14 +1,26 @@
-[gd_scene load_steps=10 format=3 uid="uid://ca053xlmm15oj"]
+[gd_scene load_steps=15 format=3 uid="uid://ca053xlmm15oj"]
 
 [ext_resource type="Script" path="res://scenes/main_scenes/main.gd" id="1_7ewth"]
 [ext_resource type="Script" path="res://scenes/main_scenes/game_state_machine.gd" id="2_8yytw"]
-[ext_resource type="Texture2D" uid="uid://cn7mcv8hhkd01" path="res://icon.svg" id="2_kd644"]
 [ext_resource type="Script" path="res://scenes/main_scenes/states/casting.gd" id="3_bg48q"]
 [ext_resource type="Script" path="res://scenes/main_scenes/states/awaiting_bite.gd" id="4_4pna0"]
 [ext_resource type="PackedScene" uid="uid://bet1ebge4k8uj" path="res://scenes/ui/ui.tscn" id="4_xuen3"]
 [ext_resource type="PackedScene" uid="uid://bxm35o0mkuqdw" path="res://scenes/bobber.tscn" id="5_ndfyd"]
 [ext_resource type="Script" path="res://scenes/main_scenes/states/biting.gd" id="5_sa70k"]
 [ext_resource type="Script" path="res://scenes/main_scenes/states/fish_hooked.gd" id="6_nced1"]
+[ext_resource type="Texture2D" uid="uid://n08eo36w3ve7" path="res://assets/textures/fishing_game_pack/background_extended.png" id="7_nl4al"]
+[ext_resource type="Texture2D" uid="uid://bi2ui1ie7s1oy" path="res://assets/textures/fishing_game_pack/idle in water-Sheet.png" id="8_2cbgj"]
+[ext_resource type="Script" path="res://scenes/fish/fish_shadows.gd" id="9_0gufs"]
+[ext_resource type="PackedScene" uid="uid://cm223y6l1j46q" path="res://scenes/fish/fish_shadow.tscn" id="10_3rmom"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ckne0"]
+atlas = ExtResource("8_2cbgj")
+region = Rect2(0, 0, 60, 0)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_inav6"]
+vertices = PackedVector2Array(220, 781, -240, 781, -240, 211, 220, 211)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-250, 201, 230, 201, 230, 791, -250, 791)])
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_7ewth")
@@ -34,19 +46,34 @@ script = ExtResource("6_nced1")
 one_shot = true
 
 [node name="Water" type="Sprite2D" parent="."]
-modulate = Color(0.0668142, 0.192864, 0.358876, 1)
-position = Vector2(-239, 52)
-scale = Vector2(3.74219, 5.28125)
-texture = ExtResource("2_kd644")
-centered = false
+position = Vector2(0, 370)
+scale = Vector2(2, 2)
+texture = ExtResource("7_nl4al")
 
 [node name="Player" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_kd644")
+position = Vector2(-10, 115)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_ckne0")
 
 [node name="Camera" type="Camera2D" parent="Player"]
-offset = Vector2(0, 300)
+offset = Vector2(0, 250)
+
+[node name="FishShadows" type="Node2D" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("9_0gufs")
+shadow_scene = ExtResource("10_3rmom")
+target = NodePath("../Bobber")
+
+[node name="Navigation" type="NavigationRegion2D" parent="FishShadows"]
+navigation_polygon = SubResource("NavigationPolygon_inav6")
+
+[node name="SpawnTimer" type="Timer" parent="FishShadows"]
+one_shot = true
+
+[node name="Fish" type="Node2D" parent="FishShadows"]
 
 [node name="Bobber" parent="." instance=ExtResource("5_ndfyd")]
+position = Vector2(-10, 215)
 
 [node name="UI" parent="." instance=ExtResource("4_xuen3")]
+
+[connection signal="timeout" from="FishShadows/SpawnTimer" to="FishShadows" method="_spawn_fish"]

@@ -54,7 +54,10 @@ func trigger_cast(distance: float, call_on_finished: Callable) -> void:
 
 
 func trigger_fish_swarm(call_when_done: Callable) -> void:
-	$Bobber.trigger_fish_swarm_anim(call_when_done)
+	# Ideally we would disconnect this once the signal is recieved once.
+	$FishShadows.fish_bite.connect(call_when_done)
+	$FishShadows.start_spawning_fish()
+	$Bobber.trigger_idle_anim()
 
 
 func trigger_bite() -> void:

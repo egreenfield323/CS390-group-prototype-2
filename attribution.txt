@@ -10,4 +10,7 @@ Old Man Likes to Fish
 	Danger Goose
 	None, stated as free to use without credit
 	https://danger-goose.itch.io/old-man-likes-to-fish-asset-pack
-	No Modification
+	No Modification, excepting:
+		background_extended.png, which is an extension of background.png
+		bobber.png, which is seperated from "cast bobbin Sheet.png"
+		fish_shadow.png, which is from fish.png, but reshaped and made black.

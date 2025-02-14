@@ -29,10 +29,6 @@ func _begin_bite_timer() -> void:
 	
 	timer.wait_time = time
 	timer.start()
-	print(timer.wait_time)
-	timer.timeout.connect(
-		func(): print("Timeout")
-	)
 
 
 func _bite_timeout() -> void:
