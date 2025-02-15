@@ -43,6 +43,7 @@ var line_tension := 50.0 : set = _set_line_tension
 func _ready() -> void:
 	$States.states = state_map
 	$States.begin(self)
+	WebInput.request_access()
 
 
 static func acceleration_to_distance(acceleration: float) -> float:
