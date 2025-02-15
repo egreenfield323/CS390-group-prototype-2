@@ -5,6 +5,10 @@ extends ProgressBar
 @onready var inner_stylebox: StyleBoxFlat = get_theme_stylebox("fill")
 
 
+func _ready() -> void:
+	value_changed.connect(_on_value_changed)
+
+
 func _on_value_changed(new_value: float) -> void:
 	var time := inverse_lerp(min_value, max_value, new_value)
 	inner_stylebox.bg_color = value_gradient.sample(time)

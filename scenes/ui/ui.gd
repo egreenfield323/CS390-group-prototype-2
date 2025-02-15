@@ -4,6 +4,8 @@ signal cast_released(acceleration: float)
 signal start_reeling
 signal stop_reeling
 signal continue_game
+signal pull_up_event_completed
+signal pull_up_event_failed
 
 
 func _ready() -> void:
@@ -11,6 +13,13 @@ func _ready() -> void:
 	$Margin/ReelButton.hide()
 	$Margin/LineTension.hide()
 	$FishCaught.hide()
+	$Margin/PullUpBox.hide()
+	$Margin/PullUpBox.pull_up_event_complete.connect(
+		func(): pull_up_event_completed.emit()
+	)
+	$Margin/PullUpBox.pull_up_event_failed.connect(
+		func(): pull_up_event_failed.emit()
+	)
 
 
 func enable_casting() -> void:
@@ -35,6 +44,14 @@ func hide_line_tension() -> void:
 
 func set_line_tension(new_line_tension: float) -> void:
 	$Margin/LineTension.value = new_line_tension
+
+
+func start_pull_up_event(time: float) -> void:
+	$Margin/PullUpBox.start_pull_up_event(time)
+
+
+func stop_pull_up_event() -> void:
+	$Margin/PullUpBox.stop_pull_up_event()
 
 
 # Will pass a Fish eventually.

@@ -87,16 +87,6 @@ func disable_reeling() -> void:
 	ui.hide_line_tension()
 
 
-func catch_event(fish_difficulty: float) -> void:
-	var time := inverse_lerp(MAX_DIFFICULTY, MIN_DIFFICULTY, fish_difficulty)
-	var pulls := int(lerp(MIN_PULLS, MAX_PULLS, time))
-	
-	for pull in range(pulls):
-		
-		
-		pass
-
-
 func _set_line_tension(new_line_tension: float) -> void:
 	line_tension = clampf(new_line_tension, MIN_LINE_TENSION, MAX_LINE_TENSION)
 	ui.set_line_tension(new_line_tension)
