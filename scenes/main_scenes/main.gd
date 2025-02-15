@@ -37,6 +37,7 @@ const MAX_PULLS = 20
 var current_cast_distance := 0.0
 var bobber_distance := 0.0 : set = _set_bobber_distance
 var line_tension := 50.0 : set = _set_line_tension
+var hooked_fish: Fish
 
 
 # Called when the node enters the scene tree for the first time.
@@ -75,6 +76,10 @@ func trigger_fish_swarm(call_when_done: Callable) -> void:
 
 func trigger_bite() -> void:
 	$Bobber.trigger_biting_anim()
+
+
+func select_fish() -> void:
+	hooked_fish = FishSelection.choose_fish(current_cast_distance)
 
 
 func enable_reeling() -> void:

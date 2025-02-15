@@ -55,7 +55,8 @@ func stop_pull_up_event() -> void:
 
 
 # Will pass a Fish eventually.
-func show_fish_caught() -> void:
+func show_fish_caught(fish: Fish) -> void:
+	$FishCaught/Margin/VBox/FishStats.display_fish(fish)
 	$FishCaught.show()
 
 

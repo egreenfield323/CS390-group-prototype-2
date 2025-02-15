@@ -5,6 +5,7 @@ signal force_set_hook
 
 const ENABLED = true
 const TOGGLE_DEV_INPUTS = "toggle_dev_inputs"
+const QUICK_SET_HOOK = "quick_dev_set_hook"
 
 
 func _ready() -> void:
@@ -14,6 +15,8 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed(TOGGLE_DEV_INPUTS):
 		visible = !visible
+	if event.is_action_pressed(QUICK_SET_HOOK):
+		_set_hook_pressed()
 
 
 func _cast_acceleration_updated(value: float) -> void:

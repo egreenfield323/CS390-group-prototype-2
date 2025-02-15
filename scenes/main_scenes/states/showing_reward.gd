@@ -3,7 +3,9 @@ extends State
 
 func enter() -> void:
 	state_machine.game.ui.continue_game.connect(_on_continue_game)
-	state_machine.game.ui.show_fish_caught()
+	state_machine.game.ui.show_fish_caught(
+		state_machine.game.hooked_fish
+	)
 
 
 func exit() -> void:

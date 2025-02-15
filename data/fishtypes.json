@@ -6,7 +6,7 @@
 			"rarity": "Common",
 			"weight_range": [0.5, 1],
 			"difficulty": [0.0, 1.5],
-			"sprite": "res://Assets/Fishing Game Pack/Fishing Game Pack/fish.png",
+			"sprite": "res://assets/textures/fishing_game_pack/fish.png",
 			"sprite_region": [120, 50, 18, 15]
 		},
 		{
@@ -15,7 +15,7 @@
 			"rarity": "Common",
 			"weight_range": [0.6, 1.1],
 			"difficulty": [0.0, 1.5],
-			"sprite": "res://Assets/Fishing Game Pack/Fishing Game Pack/fish.png",
+			"sprite": "res://assets/textures/fishing_game_pack/fish.png",
 			"sprite_region": [120, 73, 18, 15]
 		},
 		{
@@ -24,7 +24,7 @@
 			"rarity": "Uncommon",
 			"weight_range": [1, 2],
 			"difficulty": [1.5, 3.0],
-			"sprite": "res://Assets/Fishing Game Pack/Fishing Game Pack/fish.png",
+			"sprite": "res://assets/textures/fishing_game_pack/fish.png",
 			"sprite_region": [81, 5, 25, 21]
 		},
 		{
@@ -33,7 +33,7 @@
 			"rarity": "Uncommon",
 			"weight_range": [1, 2],
 			"difficulty": [1.5, 3.0],
-			"sprite": "res://Assets/Fishing Game Pack/Fishing Game Pack/fish.png",
+			"sprite": "res://assets/textures/fishing_game_pack/fish.png",
 			"sprite_region": [81, 33, 25, 21]
 		},
 		{
@@ -42,7 +42,7 @@
 			"rarity": "Rare",
 			"weight_range": [1, 2],
 			"difficulty": [3.0, 5.5],
-			"sprite": "res://Assets/Fishing Game Pack/Fishing Game Pack/fish.png",
+			"sprite": "res://assets/textures/fishing_game_pack/fish.png",
 			"sprite_region": [4, 2, 27, 19]
 		},
 		{
@@ -51,7 +51,7 @@
 			"rarity": "Rare",
 			"weight_range": [1, 2],
 			"difficulty": [3.0, 5.5],
-			"sprite": "res://Assets/Fishing Game Pack/Fishing Game Pack/fish.png",
+			"sprite": "res://assets/textures/fishing_game_pack/fish.png",
 			"sprite_region": [4, 33, 27, 19]
 		},
 		{
@@ -60,7 +60,7 @@
 			"rarity": "Rare",
 			"weight_range": [20, 40],
 			"difficulty": [3.0, 5.5],
-			"sprite": "res://Assets/Fishing Game Pack/Fishing Game Pack/fish.png",
+			"sprite": "res://assets/textures/fishing_game_pack/fish.png",
 			"sprite_region": [37, 3, 37, 23]
 		},
 		{
@@ -69,7 +69,7 @@
 			"rarity": "Very Rare",
 			"weight_range": [2, 5],
 			"difficulty": [5.5, 8.0],
-			"sprite": "res://Assets/Fishing Game Pack/Fishing Game Pack/fish.png",
+			"sprite": "res://assets/textures/fishing_game_pack/fish.png",
 			"sprite_region": [120, 2, 21, 14]
 		},
 		{
@@ -78,7 +78,7 @@
 			"rarity": "Very Rare",
 			"weight_range": [30, 55],
 			"difficulty": [5.5, 8.0],
-			"sprite": "res://Assets/Fishing Game Pack/Fishing Game Pack/fish.png",
+			"sprite": "res://assets/textures/fishing_game_pack/fish.png",
 			"sprite_region": [37, 32, 37, 23]
 		},
 		{
@@ -87,8 +87,26 @@
 			"rarity": "Legendary",
 			"weight_range": [1, 2],
 			"difficulty": [8.0, 10.0],
-			"sprite": "res://Assets/Fishing Game Pack/Fishing Game Pack/fish.png",
+			"sprite": "res://assets/textures/fishing_game_pack/fish.png",
 			"sprite_region": [11, 61, 26, 26]
+		}
+	],
+	"distribution": [
+		{
+			"max_distance": 20.0,
+			"probabilities": [0.30, 0.30, 0.15, 0.15, 0.10, 0.00, 0.00, 0.00, 0.00, 0.00]
+		},
+		{
+			"max_distance": 50.0,
+			"probabilities": [0.10, 0.10, 0.25, 0.25, 0.10, 0.05, 0.05, 0.05, 0.05, 0.00]
+		},
+		{
+			"max_distance": 80.0,
+			"probabilities": [0.05, 0.05, 0.10, 0.10, 0.20, 0.20, 0.10, 0.07, 0.07, 0.06]
+		},
+		{
+			"max_distance": 100.0,
+			"probabilities": [0.05, 0.05, 0.05, 0.05, 0.10, 0.15, 0.15, 0.15, 0.15, 0.10]
 		}
 	]
 }

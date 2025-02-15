@@ -41,7 +41,10 @@ var cooldown_timer: Timer = null
 
 # Put gameplay logic for reaction events and/or reeling here.
 func enter() -> void:
-	_pick_game_parameters(5.0)
+	state_machine.game.select_fish()
+	_pick_game_parameters(
+		state_machine.game.hooked_fish.difficulty
+	)
 	_make_timer()
 	_start_cooldown_timer()
 	reeling = false
@@ -86,6 +89,7 @@ func _pick_game_parameters(difficulty: float) -> void:
 		difficulty
 	)
 	
+	# Higher = Harder
 	tension_increase_rate = lerpf(
 		TENSION_MIN_INCREASE_RATE,
 		TENSION_MAX_INCREASE_RATE,
@@ -97,27 +101,26 @@ func _pick_game_parameters(difficulty: float) -> void:
 		time
 	)
 	
+	# Lower = Harder
 	pull_up_lower_bound = lerpf(
-		MIN_PULL_UP_LOWER_BOUND,
 		MAX_PULL_UP_LOWER_BOUND,
+		MIN_PULL_UP_LOWER_BOUND,
 		time
 	)
-	
 	pull_up_upper_bound = lerpf(
-		MIN_PULL_UP_UPPER_BOUND,
 		MAX_PULL_UP_UPPER_BOUND,
+		MIN_PULL_UP_UPPER_BOUND,
 		time
 	)
 	
 	pull_up_cooldown_lower_bound = lerpf(
-		MIN_PULL_UP_COOLDOWN_LOWER_BOUND,
 		MAX_PULL_UP_COOLDOWN_LOWER_BOUND,
+		MIN_PULL_UP_COOLDOWN_LOWER_BOUND,
 		time
 	)
-	
 	pull_up_cooldown_upper_bound = lerpf(
-		MIN_PULL_UP_COOLDOWN_UPPER_BOUND,
 		MAX_PULL_UP_COOLDOWN_UPPER_BOUND,
+		MIN_PULL_UP_COOLDOWN_UPPER_BOUND,
 		time
 	)
 
