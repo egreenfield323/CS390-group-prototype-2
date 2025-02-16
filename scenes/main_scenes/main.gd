@@ -24,7 +24,7 @@ const MIN_DIFFICULTY = 0.0
 const MIN_PULLS = 1
 const MAX_PULLS = 20
 
-const SESSION_SECONDS = 20#300
+const SESSION_SECONDS = 300
 
 @onready var state_map = {
 	States.CASTING: $States/Casting,
