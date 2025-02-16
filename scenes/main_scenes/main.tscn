@@ -80,4 +80,8 @@ position = Vector2(-10, 215)
 
 [node name="UI" parent="." instance=ExtResource("4_xuen3")]
 
+[node name="SessionTimer" type="Timer" parent="."]
+autostart = true
+
 [connection signal="timeout" from="FishShadows/SpawnTimer" to="FishShadows" method="_spawn_fish"]
+[connection signal="timeout" from="SessionTimer" to="." method="_on_session_timer_timeout"]

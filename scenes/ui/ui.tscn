@@ -1,35 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://bet1ebge4k8uj"]
+[gd_scene load_steps=19 format=3 uid="uid://bet1ebge4k8uj"]
 
 [ext_resource type="Theme" uid="uid://cl7rjoolrg5ji" path="res://resources/default.tres" id="1_2f4iu"]
 [ext_resource type="Script" path="res://scenes/ui/ui.gd" id="1_a70a8"]
 [ext_resource type="Script" path="res://scenes/ui/color_progress.gd" id="3_ec8tn"]
 [ext_resource type="Script" path="res://scenes/ui/pull_up_box.gd" id="4_ksyrv"]
 [ext_resource type="Script" path="res://scenes/ui/fish_stats.gd" id="5_avxj6"]
+[ext_resource type="Script" path="res://scenes/ui/session_timer.gd" id="5_b58q4"]
 [ext_resource type="Texture2D" uid="uid://dc4u6kdsr2yjv" path="res://assets/textures/fishing_game_pack/fish.png" id="5_csx41"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ugine"]
-bg_color = Color(0.219501, 0.219501, 0.219501, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 2.0
-expand_margin_bottom = 2.0
-anti_aliasing_size = 0.2
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hfwwg"]
-bg_color = Color(0, 1, 0, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-anti_aliasing_size = 0.2
-
-[sub_resource type="Gradient" id="Gradient_chtfh"]
-offsets = PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1)
-colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 0, 0, 1)
+[ext_resource type="Script" path="res://scenes/ui/session_results.gd" id="7_wtygh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_504xa"]
 bg_color = Color(0.219501, 0.219501, 0.219501, 1)
@@ -55,11 +33,97 @@ anti_aliasing_size = 0.2
 offsets = PackedFloat32Array(0, 0.5, 1)
 colors = PackedColorArray(0, 1, 0, 1, 1, 1, 0, 1, 1, 0, 0, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ugine"]
+bg_color = Color(0.219501, 0.219501, 0.219501, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+anti_aliasing_size = 0.2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hfwwg"]
+bg_color = Color(0, 1, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing_size = 0.2
+
+[sub_resource type="Gradient" id="Gradient_chtfh"]
+offsets = PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_v11co"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_b2xyo"]
+resource_name = "show_gold"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 2.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0hbjr"]
+_data = {
+"RESET": SubResource("Animation_v11co"),
+"show_gold": SubResource("Animation_b2xyo")
+}
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_iyjp8"]
 atlas = ExtResource("5_csx41")
 region = Rect2(11, 61, 26, 26)
 
 [node name="UI" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_a70a8")
 
 [node name="Margin" type="MarginContainer" parent="."]
@@ -82,22 +146,10 @@ size_flags_vertical = 8
 text = "Hold to cast"
 
 [node name="ReelButton" type="Button" parent="Margin"]
-visible = false
 custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
 size_flags_vertical = 8
 text = "Hold to Reel"
-
-[node name="LineTension" type="ProgressBar" parent="Margin"]
-visible = false
-custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
-theme_override_styles/background = SubResource("StyleBoxFlat_ugine")
-theme_override_styles/fill = SubResource("StyleBoxFlat_hfwwg")
-value = 50.0
-show_percentage = false
-script = ExtResource("3_ec8tn")
-value_gradient = SubResource("Gradient_chtfh")
 
 [node name="PullUpBox" type="VBoxContainer" parent="Margin"]
 visible = false
@@ -122,7 +174,42 @@ show_percentage = false
 script = ExtResource("3_ec8tn")
 value_gradient = SubResource("Gradient_auuwb")
 
+[node name="VBox" type="VBoxContainer" parent="Margin"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="LineTension" type="ProgressBar" parent="Margin/VBox"]
+visible = false
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_ugine")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hfwwg")
+value = 50.0
+show_percentage = false
+script = ExtResource("3_ec8tn")
+value_gradient = SubResource("Gradient_chtfh")
+
+[node name="SessionTimer" type="Label" parent="Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Session time remaining: 5:00"
+horizontal_alignment = 1
+script = ExtResource("5_b58q4")
+
+[node name="Gold" type="Label" parent="Margin/VBox"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 0
+text = "Gold: 0"
+horizontal_alignment = 1
+
+[node name="Animation" type="AnimationPlayer" parent="Margin/VBox/Gold"]
+libraries = {
+"": SubResource("AnimationLibrary_0hbjr")
+}
+
 [node name="FishCaught" type="ColorRect" parent="."]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -187,8 +274,79 @@ custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 text = "Continue"
 
+[node name="SessionResults" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.160784, 0.160784, 0.160784, 0.733333)
+script = ExtResource("7_wtygh")
+
+[node name="Margin" type="MarginContainer" parent="SessionResults"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_2f4iu")
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBox" type="VBoxContainer" parent="SessionResults/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Title" type="Label" parent="SessionResults/Margin/VBox"]
+layout_mode = 2
+text = "It's time to see what you've got!"
+horizontal_alignment = 1
+
+[node name="FishCount" type="Label" parent="SessionResults/Margin/VBox"]
+layout_mode = 2
+text = "Number of fish caught: 0"
+horizontal_alignment = 1
+
+[node name="FishWeight" type="Label" parent="SessionResults/Margin/VBox"]
+layout_mode = 2
+text = "Weight of fish caught: 0 lb"
+horizontal_alignment = 1
+
+[node name="FishValue" type="Label" parent="SessionResults/Margin/VBox"]
+layout_mode = 2
+text = "Worth a total of 0 gold."
+horizontal_alignment = 1
+
+[node name="HighScore" type="Label" parent="SessionResults/Margin/VBox"]
+layout_mode = 2
+text = "(Your high score is 10 gold.)
+(New high score!)"
+horizontal_alignment = 1
+
+[node name="Buttons" type="VBoxContainer" parent="SessionResults/Margin/VBox"]
+layout_mode = 2
+
+[node name="PlayAgain" type="Button" parent="SessionResults/Margin/VBox/Buttons"]
+layout_mode = 2
+text = "Play Again"
+
+[node name="MainMenu" type="Button" parent="SessionResults/Margin/VBox/Buttons"]
+layout_mode = 2
+text = "Main Menu"
+
+[node name="Button" type="Button" parent="SessionResults"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
 [connection signal="button_down" from="Margin/CastButton" to="." method="_on_cast_button_down"]
 [connection signal="button_up" from="Margin/CastButton" to="." method="_on_cast_button_released"]
 [connection signal="button_down" from="Margin/ReelButton" to="." method="_on_reel_button_button_down"]
 [connection signal="button_up" from="Margin/ReelButton" to="." method="_on_reel_button_button_up"]
 [connection signal="pressed" from="FishCaught/Margin/VBox/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="SessionResults/Margin/VBox/Buttons/PlayAgain" to="SessionResults" method="_on_play_again_pressed"]
+[connection signal="pressed" from="SessionResults/Margin/VBox/Buttons/MainMenu" to="SessionResults" method="_on_main_menu_pressed"]

@@ -21,6 +21,7 @@ DevInputs="*res://scenes/ui/dev_inputs.tscn"
 WebInput="*res://autoload/web_input.gd"
 Music="*res://autoload/music.gd"
 FishSelection="*res://scripts/fish_selection.gd"
+Scores="*res://autoload/scores.gd"
 
 [display]
 

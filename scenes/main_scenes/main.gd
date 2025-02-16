@@ -24,6 +24,8 @@ const MIN_DIFFICULTY = 0.0
 const MIN_PULLS = 1
 const MAX_PULLS = 20
 
+const SESSION_SECONDS = 20#300
+
 @onready var state_map = {
 	States.CASTING: $States/Casting,
 	States.AWAITING_BITE: $States/AwaitingBite,
@@ -33,6 +35,12 @@ const MAX_PULLS = 20
 }
 
 @onready var ui := $UI
+
+var session_seconds_remaining = SESSION_SECONDS : set = _set_session_seconds
+
+var gold := 0
+var total_weight := 0.0
+var fish_count := 0
 
 var current_cast_distance := 0.0
 var bobber_distance := 0.0 : set = _set_bobber_distance
@@ -44,6 +52,7 @@ var hooked_fish: Fish
 func _ready() -> void:
 	$States.states = state_map
 	$States.begin(self)
+	ui.set_session_seconds(SESSION_SECONDS)
 	WebInput.request_access()
 
 
@@ -93,6 +102,24 @@ func disable_reeling() -> void:
 	ui.hide_line_tension()
 
 
+func aquire_fish() -> void:
+	fish_count += 1
+	total_weight += hooked_fish.weight
+	gold += hooked_fish.value
+	ui.show_fish_caught(hooked_fish)
+
+
+func _session_over() -> void:
+	ui.show_results(fish_count, total_weight, gold)
+	process_mode = ProcessMode.PROCESS_MODE_DISABLED
+
+
+func _on_session_timer_timeout() -> void:
+	session_seconds_remaining -= 1
+	if session_seconds_remaining <= 0:
+		_session_over()
+
+
 func _set_line_tension(new_line_tension: float) -> void:
 	line_tension = clampf(new_line_tension, MIN_LINE_TENSION, MAX_LINE_TENSION)
 	ui.set_line_tension(new_line_tension)
@@ -101,3 +128,8 @@ func _set_line_tension(new_line_tension: float) -> void:
 func _set_bobber_distance(new_bobber_distance: float) -> void:
 	bobber_distance = clampf(new_bobber_distance, 0.0, MAX_DISTANCE)
 	$Bobber.reel_to(new_bobber_distance)
+
+
+func _set_session_seconds(new_session_seconds: int) -> void:
+	session_seconds_remaining = new_session_seconds
+	ui.set_session_seconds(session_seconds_remaining)

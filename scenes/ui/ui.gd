@@ -11,7 +11,7 @@ signal pull_up_event_failed
 func _ready() -> void:
 	$Margin/CastButton.hide()
 	$Margin/ReelButton.hide()
-	$Margin/LineTension.hide()
+	$Margin/VBox/LineTension.hide()
 	$FishCaught.hide()
 	$Margin/PullUpBox.hide()
 	$Margin/PullUpBox.pull_up_event_complete.connect(
@@ -20,6 +20,8 @@ func _ready() -> void:
 	$Margin/PullUpBox.pull_up_event_failed.connect(
 		func(): pull_up_event_failed.emit()
 	)
+	$SessionResults.hide()
+	$Margin/VBox/Gold.hide()
 
 
 func enable_casting() -> void:
@@ -35,15 +37,15 @@ func disable_reeling() -> void:
 
 
 func show_line_tension() -> void:
-	$Margin/LineTension.show()
+	$Margin/VBox/LineTension.show()
 
 
 func hide_line_tension() -> void:
-	$Margin/LineTension.hide()
+	$Margin/VBox/LineTension.hide()
 
 
 func set_line_tension(new_line_tension: float) -> void:
-	$Margin/LineTension.value = new_line_tension
+	$Margin/VBox/LineTension.value = new_line_tension
 
 
 func start_pull_up_event(time: float) -> void:
@@ -58,6 +60,19 @@ func stop_pull_up_event() -> void:
 func show_fish_caught(fish: Fish) -> void:
 	$FishCaught/Margin/VBox/FishStats.display_fish(fish)
 	$FishCaught.show()
+
+
+func show_gold(gold: int) -> void:
+	$Margin/VBox/Gold.text = "Gold: " + str(gold)
+	$Margin/VBox/Gold/Animation.play("show_gold")
+
+
+func show_results(count: int, weight: float, value: int) -> void:
+	$SessionResults.show_results(count, weight, value)
+
+
+func set_session_seconds(seconds: int) -> void:
+	$Margin/VBox/SessionTimer.seconds = seconds
 
 
 func _on_cast_button_down() -> void:

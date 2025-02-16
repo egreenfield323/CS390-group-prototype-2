@@ -17,7 +17,6 @@ func _get_probability_set(distance: float) -> Array[float]:
 		if distance > max_distance:
 			continue
 		
-		print(point["probabilities"])
 		var probabilities: Array[float]
 		probabilities.assign(point["probabilities"])
 		return probabilities

@@ -37,5 +37,4 @@ func _bite_timeout() -> void:
 
 
 func _on_hook_set() -> void:
-	print("Hooked")
 	state_machine.change_state_to(Game.States.FISH_HOOKED)

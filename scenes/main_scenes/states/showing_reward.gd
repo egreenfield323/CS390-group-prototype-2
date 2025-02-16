@@ -3,13 +3,12 @@ extends State
 
 func enter() -> void:
 	state_machine.game.ui.continue_game.connect(_on_continue_game)
-	state_machine.game.ui.show_fish_caught(
-		state_machine.game.hooked_fish
-	)
+	state_machine.game.aquire_fish()
 
 
 func exit() -> void:
 	state_machine.game.ui.continue_game.disconnect(_on_continue_game)
+	state_machine.game.ui.show_gold(state_machine.game.gold)
 
 
 func _on_continue_game() -> void:
