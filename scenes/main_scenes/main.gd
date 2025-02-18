@@ -34,7 +34,8 @@ const SESSION_SECONDS = 300
 	States.SHOWING_REWARD: $States/ShowingReward,
 }
 
-@onready var ui := $UI
+@onready var ui: CanvasLayer = $UI
+@onready var player_anim: AnimationPlayer = $Player/Animation
 
 var session_seconds_remaining = SESSION_SECONDS : set = _set_session_seconds
 

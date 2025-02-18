@@ -15,6 +15,8 @@ Old Man Likes to Fish
 		bobber.png, which is seperated from "cast bobbin Sheet.png"
 		fish_shadow.png, which is from fish.png, but reshaped and made black.
 		background_blurred.png, which is from background_extended.png, but with a blur applied.
+		background_extended_animated.png, which is background_extended.png but with animation by
+		moving parts of the image around.
 
 Super Funtime (Font)
 	res://assets/fonts/super_funtime.ttf

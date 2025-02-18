@@ -48,6 +48,18 @@ func stop_moving() -> void:
 
 func start_moving() -> void:
 	moving = true
+	$Animation.play("move")
+
+
+func disappear() -> void:
+	stop_moving()
+	target_position = Vector2.ZERO
+	var tween := create_tween()
+	tween.finished.connect(
+		func():
+			queue_free()
+	)
+	tween.tween_property(self, "modulate", Color(1.0, 1.0, 1.0, 0.0), FADE_DURATION)
 
 # I've also connected NavigationAgent's target_reached so we don't have to give the bobber a
 # collision.

@@ -54,6 +54,7 @@ func enter() -> void:
 	state_machine.game.ui.pull_up_event_completed.connect(_pull_up_completed)
 	state_machine.game.ui.pull_up_event_failed.connect(_pull_up_failed)
 	process_mode = ProcessMode.PROCESS_MODE_INHERIT
+	state_machine.game.player_anim.play("idle_casted")
 
 
 func _process(delta: float) -> void:
@@ -154,10 +155,12 @@ func _on_fish_caught() -> void:
 
 func _start_reeling() -> void:
 	reeling = true
+	state_machine.game.player_anim.play("reel")
 
 
 func _stop_reeling() -> void:
 	reeling = false
+	state_machine.game.player_anim.play("idle_casted")
 
 
 func _on_cooldown_timeout() -> void:

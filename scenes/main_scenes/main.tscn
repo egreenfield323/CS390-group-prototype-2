@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ca053xlmm15oj"]
+[gd_scene load_steps=27 format=3 uid="uid://ca053xlmm15oj"]
 
 [ext_resource type="Script" path="res://scenes/main_scenes/main.gd" id="1_7ewth"]
 [ext_resource type="Script" path="res://scenes/main_scenes/game_state_machine.gd" id="2_8yytw"]
@@ -9,14 +9,296 @@
 [ext_resource type="Script" path="res://scenes/main_scenes/states/biting.gd" id="5_sa70k"]
 [ext_resource type="Script" path="res://scenes/main_scenes/states/fish_hooked.gd" id="6_nced1"]
 [ext_resource type="Script" path="res://scenes/main_scenes/states/showing_reward.gd" id="7_l7omh"]
-[ext_resource type="Texture2D" uid="uid://n08eo36w3ve7" path="res://assets/textures/fishing_game_pack/background_extended.png" id="7_nl4al"]
 [ext_resource type="Texture2D" uid="uid://bi2ui1ie7s1oy" path="res://assets/textures/fishing_game_pack/idle in water-Sheet.png" id="8_2cbgj"]
+[ext_resource type="Texture2D" uid="uid://bkhh8k6tvdox" path="res://assets/textures/fishing_game_pack/fishing_background_extended_animated.png" id="8_vgy5o"]
 [ext_resource type="Script" path="res://scenes/fish/fish_shadows.gd" id="9_0gufs"]
 [ext_resource type="PackedScene" uid="uid://cm223y6l1j46q" path="res://scenes/fish/fish_shadow.tscn" id="10_3rmom"]
+[ext_resource type="Texture2D" uid="uid://cq27nr6ix1th3" path="res://assets/textures/fishing_game_pack/old man idle state no line-Sheet.png" id="10_jbh5r"]
+[ext_resource type="Texture2D" uid="uid://bak5glk5w80rl" path="res://assets/textures/fishing_game_pack/cast_no_bobber.png" id="11_78h6x"]
+[ext_resource type="Texture2D" uid="uid://bvfkm44hkrg0a" path="res://assets/textures/fishing_game_pack/old man reel in action Sheet.png" id="12_lqaxl"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ckne0"]
-atlas = ExtResource("8_2cbgj")
-region = Rect2(0, 0, 60, 0)
+[sub_resource type="AtlasTexture" id="AtlasTexture_iw6f0"]
+atlas = ExtResource("8_vgy5o")
+region = Rect2(0, 0, 250, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjxwi"]
+atlas = ExtResource("8_vgy5o")
+region = Rect2(250, 0, 250, 500)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lhpc0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iw6f0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjxwi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="Animation" id="Animation_seuh8"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("10_jbh5r")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -20)]
+}
+
+[sub_resource type="Animation" id="Animation_4ojod"]
+resource_name = "idle_casted"
+length = 2.0
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("8_2cbgj")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_w8ic5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("8_2cbgj")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nkmbb"]
+resource_name = "cast"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("11_78h6x")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ccu2a"]
+resource_name = "reel"
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("12_lqaxl")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e08ni"]
+_data = {
+"RESET": SubResource("Animation_w8ic5"),
+"cast": SubResource("Animation_nkmbb"),
+"idle": SubResource("Animation_seuh8"),
+"idle_casted": SubResource("Animation_4ojod"),
+"reel": SubResource("Animation_ccu2a")
+}
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_inav6"]
 vertices = PackedVector2Array(220, 781, -240, 781, -240, 211, 220, 211)
@@ -49,18 +331,26 @@ script = ExtResource("7_l7omh")
 [node name="PullTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="Water" type="Sprite2D" parent="."]
+[node name="Water" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 370)
 scale = Vector2(2, 2)
-texture = ExtResource("7_nl4al")
+sprite_frames = SubResource("SpriteFrames_lhpc0")
+autoplay = "default"
+frame_progress = 0.125616
 
 [node name="Player" type="Sprite2D" parent="."]
 position = Vector2(-10, 115)
 scale = Vector2(2, 2)
-texture = SubResource("AtlasTexture_ckne0")
+texture = ExtResource("8_2cbgj")
+hframes = 4
 
 [node name="Camera" type="Camera2D" parent="Player"]
 offset = Vector2(0, 250)
+
+[node name="Animation" type="AnimationPlayer" parent="Player"]
+libraries = {
+"": SubResource("AnimationLibrary_e08ni")
+}
 
 [node name="FishShadows" type="Node2D" parent="." node_paths=PackedStringArray("target")]
 script = ExtResource("9_0gufs")

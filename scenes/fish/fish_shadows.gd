@@ -25,7 +25,7 @@ func clear_fish() -> void:
 	for shadow in $Fish.get_children():
 		shadow.bite_hook.disconnect(_on_fish_bite)
 		# Maybe add a fade out then queue_free function to the shadows later.
-		shadow.queue_free()
+		shadow.disappear()
 
 
 func _start_spawn_timer() -> void:
