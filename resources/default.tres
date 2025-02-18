@@ -1,3 +1,14 @@
-[gd_resource type="Theme" format=3 uid="uid://cl7rjoolrg5ji"]
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://cl7rjoolrg5ji"]
+
+[ext_resource type="FontFile" uid="uid://12wpykauklyh" path="res://assets/fonts/super_funtime.ttf" id="1_c0tg1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e3qpt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wunlv"]
 
 [resource]
+default_font = ExtResource("1_c0tg1")
+default_font_size = 28
+Button/styles/focus = SubResource("StyleBoxEmpty_e3qpt")
+Button/styles/hover = SubResource("StyleBoxEmpty_wunlv")
+Button/styles/normal = null

@@ -1,0 +1,19 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://clihegq77wleo"]
+
+[ext_resource type="Texture2D" uid="uid://doaurdj0nsp4o" path="res://assets/textures/ui/med_button_normal.svg" id="2_bhg6k"]
+[ext_resource type="Texture2D" uid="uid://db3ysq4fkjqwy" path="res://assets/textures/ui/med_button_pressed.svg" id="3_7hpf7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_52tf8"]
+texture = ExtResource("2_bhg6k")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w7hs0"]
+texture = ExtResource("2_bhg6k")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bm6yp"]
+texture = ExtResource("3_7hpf7")
+
+[resource]
+Button/font_sizes/font_size = 32
+Button/styles/hover = SubResource("StyleBoxTexture_52tf8")
+Button/styles/normal = SubResource("StyleBoxTexture_w7hs0")
+Button/styles/pressed = SubResource("StyleBoxTexture_bm6yp")

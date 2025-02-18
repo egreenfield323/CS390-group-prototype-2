@@ -1,4 +1,4 @@
-extends MarginContainer
+extends Control
 
 @export_file var main_scene: String
 

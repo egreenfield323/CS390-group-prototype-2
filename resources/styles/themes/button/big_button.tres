@@ -1,0 +1,10 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://dhjgqdx0xo07q"]
+
+[ext_resource type="StyleBox" uid="uid://b1y7j3lawjh1h" path="res://resources/styles/button_styles/big_button_normal.tres" id="1_p0ke1"]
+[ext_resource type="StyleBox" uid="uid://deire070y41y7" path="res://resources/styles/button_styles/big_button_pressed.tres" id="2_bmb6q"]
+
+[resource]
+Button/font_sizes/font_size = 32
+Button/styles/hover = ExtResource("1_p0ke1")
+Button/styles/normal = ExtResource("1_p0ke1")
+Button/styles/pressed = ExtResource("2_bmb6q")

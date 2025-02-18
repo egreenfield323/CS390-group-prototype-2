@@ -1,31 +1,52 @@
-[gd_scene load_steps=2 format=3 uid="uid://bvcwltccekwin"]
+[gd_scene load_steps=5 format=3 uid="uid://bvcwltccekwin"]
 
 [ext_resource type="Script" path="res://scenes/menus/main_menu.gd" id="1_1ibqf"]
+[ext_resource type="Theme" uid="uid://cl7rjoolrg5ji" path="res://resources/default.tres" id="1_jatxy"]
+[ext_resource type="Texture2D" uid="uid://0qttmyu204t3" path="res://assets/textures/fishing_game_pack/background_blurred.png" id="1_m2lmt"]
+[ext_resource type="Theme" uid="uid://dhjgqdx0xo07q" path="res://resources/styles/themes/button/big_button.tres" id="3_ujfdm"]
 
-[node name="MainMenu" type="MarginContainer"]
+[node name="MainMenu" type="TextureRect"]
+self_modulate = Color(0.617455, 0.617455, 0.617455, 1)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 50
-theme_override_constants/margin_right = 50
-theme_override_constants/margin_bottom = 50
+texture = ExtResource("1_m2lmt")
+expand_mode = 3
 script = ExtResource("1_1ibqf")
 main_scene = "res://scenes/main_scenes/main.tscn"
 
-[node name="VBox" type="VBoxContainer" parent="."]
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_jatxy")
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 75
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 175
+
+[node name="VBox" type="VBoxContainer" parent="Margin"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBox"]
+[node name="Label" type="Label" parent="Margin/VBox"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 96
 text = "Phish"
 horizontal_alignment = 1
 
-[node name="Play" type="Button" parent="VBox"]
-custom_minimum_size = Vector2(0, 100)
+[node name="Spacer" type="Control" parent="Margin/VBox"]
 layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Play" type="Button" parent="Margin/VBox"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+theme = ExtResource("3_ujfdm")
 text = "Play"
 
-[connection signal="pressed" from="VBox/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Margin/VBox/Play" to="." method="_on_play_pressed"]

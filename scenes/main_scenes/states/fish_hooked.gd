@@ -140,10 +140,12 @@ func _start_cooldown_timer() -> void:
 
 func _on_line_too_tight() -> void:
 	state_machine.change_state_to(Game.States.CASTING)
+	state_machine.game.ui.notify_fish_escaped(true)
 
 
 func _on_line_too_loose() -> void:
 	state_machine.change_state_to(Game.States.CASTING)
+	state_machine.game.ui.notify_fish_escaped(false)
 
 
 func _on_fish_caught() -> void:
