@@ -105,3 +105,10 @@ River 02
 	CC0
 	https://freesound.org/people/MarcMatthewsMusic/sounds/420557/
 	Cut, shaped into a one-shot
+
+Click 03
+	res://assets/sound/button_click.wav
+	moogy73
+	CC0
+	https://freesound.org/people/moogy73/sounds/425726/
+	Removed delay at start
