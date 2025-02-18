@@ -17,6 +17,7 @@ func _on_cast_released(acelleration: float) -> void:
 	)
 	game.player_anim.animation_finished.connect(_on_player_cast_anim_finished)
 	game.player_anim.play("cast")
+	game.sounds.play("cast")
 
 
 func _on_cast_finished() -> void:

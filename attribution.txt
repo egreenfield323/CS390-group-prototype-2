@@ -24,3 +24,84 @@ Super Funtime (Font)
 	"Freeware" - Free for personal and commercial use
 	https://www.fontspace.com/super-funtime-font-f100989
 	No Modification
+
+Wave Ripple
+	Used in res://assets/sound/backgrounds.ogg
+	borje
+	CC0
+	https://freesound.org/people/borje/sounds/26472/
+	Volume varied, combined with other sounds
+
+Silencyo CC Wind Mistral Strong Dry Grass Swifts
+	Used in res://assets/sound/backgrounds.ogg
+	silencyo
+	CC0
+	https://freesound.org/people/silencyo/sounds/81796/
+	Volume varied, combined with other sounds
+
+Fishing Reel Cast W/ Splash
+	Used in res://assets/sound/cast.wav
+	mwchristian95
+	CC0
+	https://freesound.org/people/mwchristian95/sounds/725425/
+	Combined with other sounds
+
+Light Woosh
+	Used in res://assets/sound/cast.wav
+	sophiehall3535
+	CC0
+	https://freesound.org/people/sophiehall3535/sounds/245933/
+	Combined with other sounds, other wooshes cut out
+
+Water
+	res://assets/sound/bobber_land.wav
+	danielpodlovics
+	CC0
+	https://freesound.org/people/danielpodlovics/sounds/530359/
+	No Modification
+
+Old fishing reel fast rewinding fishing line
+	res://assets/sound/reeling.wav
+	AudioPapkin
+	CC0
+	https://freesound.org/people/AudioPapkin/sounds/716635/
+	Filtered and crossfaded ends
+
+Twig Snap Classic
+	res://assets/sound/line_snap.wav
+	martian
+	CC0
+	https://freesound.org/people/martian/sounds/251464/
+	No Modification
+
+Splash Recording 2
+	res://assets/sound/fish_escaped.wav
+	res://assets/sound/fish_caught.wav
+	res://assets/sound/fish_bite.wav
+	JfishSoM
+	CC0
+	https://freesound.org/people/JfishSoM/sounds/703512/
+	fish_escaped: Cut from original
+	fish_caught: Cut from original, layered, balanced, pitched down
+	fish_bite: Cut from original
+
+Pool Swimming L-R
+	res://assets/sound/fish_on_line.wav
+	tbsounddesigns
+	CC0
+	https://freesound.org/people/tbsounddesigns/sounds/530154/
+	Speed up, crossfaded ends
+
+Sweet Alert Sound 3
+	res://assets/sound/pull_up_alert.wav
+	KIZILSUNGUR
+	CC0
+	https://freesound.org/people/KIZILSUNGUR/sounds/72127/
+	Speed up, pitched up, volume lowered
+
+River 02
+	res://assets/sound/fish_move.wav
+	MarcMatthewsMusic
+	CC0
+	https://freesound.org/people/MarcMatthewsMusic/sounds/420557/
+	Cut, shaped into a one-shot

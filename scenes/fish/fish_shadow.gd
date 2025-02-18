@@ -49,6 +49,7 @@ func stop_moving() -> void:
 func start_moving() -> void:
 	moving = true
 	$Animation.play("move")
+	$Move.play()
 
 
 func disappear() -> void:

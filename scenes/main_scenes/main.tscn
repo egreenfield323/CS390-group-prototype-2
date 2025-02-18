@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ca053xlmm15oj"]
+[gd_scene load_steps=38 format=3 uid="uid://ca053xlmm15oj"]
 
 [ext_resource type="Script" path="res://scenes/main_scenes/main.gd" id="1_7ewth"]
 [ext_resource type="Script" path="res://scenes/main_scenes/game_state_machine.gd" id="2_8yytw"]
@@ -16,6 +16,17 @@
 [ext_resource type="Texture2D" uid="uid://cq27nr6ix1th3" path="res://assets/textures/fishing_game_pack/old man idle state no line-Sheet.png" id="10_jbh5r"]
 [ext_resource type="Texture2D" uid="uid://bak5glk5w80rl" path="res://assets/textures/fishing_game_pack/cast_no_bobber.png" id="11_78h6x"]
 [ext_resource type="Texture2D" uid="uid://bvfkm44hkrg0a" path="res://assets/textures/fishing_game_pack/old man reel in action Sheet.png" id="12_lqaxl"]
+[ext_resource type="AudioStream" uid="uid://c47i0n7snsrs6" path="res://assets/sound/fish_bite.wav" id="15_vjewh"]
+[ext_resource type="AudioStream" uid="uid://cp6mfq5ipkw21" path="res://assets/sound/backgrounds.ogg" id="17_emy3d"]
+[ext_resource type="Script" path="res://scenes/main_scenes/sound_bank.gd" id="18_oh7fu"]
+[ext_resource type="AudioStream" uid="uid://binc8ffkjeidq" path="res://assets/sound/cast.wav" id="19_wsjxi"]
+[ext_resource type="AudioStream" uid="uid://chhdo8t8kbv3l" path="res://assets/sound/bobber_land.wav" id="20_d0m8w"]
+[ext_resource type="AudioStream" uid="uid://doykvqjeytdsy" path="res://assets/sound/reeling.wav" id="21_i2hba"]
+[ext_resource type="AudioStream" uid="uid://cghxsnwd83qn7" path="res://assets/sound/line_snap.wav" id="22_n7i3v"]
+[ext_resource type="AudioStream" uid="uid://bys4w4wet3g3i" path="res://assets/sound/fish_escaped.wav" id="23_pu18m"]
+[ext_resource type="AudioStream" uid="uid://jmmcdjeeakw6" path="res://assets/sound/fish_on_line.wav" id="24_jla7a"]
+[ext_resource type="AudioStream" uid="uid://cmoj63o07dhgb" path="res://assets/sound/fish_caught.wav" id="25_2vp1w"]
+[ext_resource type="AudioStream" uid="uid://cgphgv3pu3ky0" path="res://assets/sound/pull_up_alert.wav" id="26_8j1xb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iw6f0"]
 atlas = ExtResource("8_vgy5o")
@@ -38,6 +49,109 @@ animations = [{
 "name": &"default",
 "speed": 2.0
 }]
+
+[sub_resource type="Animation" id="Animation_w8ic5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("8_2cbgj")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nkmbb"]
+resource_name = "cast"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("11_78h6x")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_seuh8"]
 resource_name = "idle"
@@ -133,109 +247,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:offset")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_w8ic5"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("8_2cbgj")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:offset")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_nkmbb"]
-resource_name = "cast"
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("11_78h6x")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [7]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -365,6 +376,9 @@ one_shot = true
 
 [node name="Fish" type="Node2D" parent="FishShadows"]
 
+[node name="Bite" type="AudioStreamPlayer" parent="FishShadows"]
+stream = ExtResource("15_vjewh")
+
 [node name="Bobber" parent="." instance=ExtResource("5_ndfyd")]
 position = Vector2(-10, 215)
 
@@ -373,5 +387,15 @@ position = Vector2(-10, 215)
 [node name="SessionTimer" type="Timer" parent="."]
 autostart = true
 
+[node name="Backgrounds" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_emy3d")
+autoplay = true
+
+[node name="SoundBank" type="Node" parent="."]
+script = ExtResource("18_oh7fu")
+identifiers = Array[String](["cast", "bobber_land", "reeling", "line_snap", "fish_escaped", "fish_on_line", "fish_caught", "pull_up_alert"])
+streams = Array[AudioStream]([ExtResource("19_wsjxi"), ExtResource("20_d0m8w"), ExtResource("21_i2hba"), ExtResource("22_n7i3v"), ExtResource("23_pu18m"), ExtResource("24_jla7a"), ExtResource("25_2vp1w"), ExtResource("26_8j1xb")])
+
 [connection signal="timeout" from="FishShadows/SpawnTimer" to="FishShadows" method="_spawn_fish"]
+[connection signal="cast_finished" from="Bobber" to="." method="_on_bobber_cast_finished"]
 [connection signal="timeout" from="SessionTimer" to="." method="_on_session_timer_timeout"]

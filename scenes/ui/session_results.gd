@@ -22,6 +22,7 @@ func show_results(count: int, weight: float, value: int) -> void:
 		$Margin/VBox/HighScore.text = HIGH_SCORE_TEXT % Scores.get_high_score()
 	
 	show()
+	$Appear.play()
 
 
 func _on_play_again_pressed() -> void:

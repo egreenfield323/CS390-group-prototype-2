@@ -22,6 +22,7 @@ WebInput="*res://autoload/web_input.gd"
 Music="*res://autoload/music.gd"
 FishSelection="*res://scripts/fish_selection.gd"
 Scores="*res://autoload/scores.gd"
+UISoundBank="*res://autoload/ui_sound_bank.gd"
 
 [display]
 

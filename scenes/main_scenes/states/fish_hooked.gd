@@ -55,6 +55,7 @@ func enter() -> void:
 	state_machine.game.ui.pull_up_event_failed.connect(_pull_up_failed)
 	process_mode = ProcessMode.PROCESS_MODE_INHERIT
 	state_machine.game.player_anim.play("idle_casted")
+	state_machine.game.sounds.play_looping("fish_on_line")
 
 
 func _process(delta: float) -> void:
@@ -80,6 +81,8 @@ func exit() -> void:
 	cooldown_timer.queue_free()
 	state_machine.game.ui.pull_up_event_completed.disconnect(_pull_up_completed)
 	state_machine.game.ui.pull_up_event_failed.disconnect(_pull_up_failed)
+	state_machine.game.sounds.stop_looping("reeling")
+	state_machine.game.sounds.stop_looping("fish_on_line")
 	process_mode = ProcessMode.PROCESS_MODE_DISABLED
 
 
@@ -142,11 +145,13 @@ func _start_cooldown_timer() -> void:
 func _on_line_too_tight() -> void:
 	state_machine.change_state_to(Game.States.CASTING)
 	state_machine.game.ui.notify_fish_escaped(true)
+	state_machine.game.sounds.play("line_snap")
 
 
 func _on_line_too_loose() -> void:
 	state_machine.change_state_to(Game.States.CASTING)
 	state_machine.game.ui.notify_fish_escaped(false)
+	state_machine.game.sounds.play("fish_escaped")
 
 
 func _on_fish_caught() -> void:
@@ -156,16 +161,19 @@ func _on_fish_caught() -> void:
 func _start_reeling() -> void:
 	reeling = true
 	state_machine.game.player_anim.play("reel")
+	state_machine.game.sounds.play_looping("reeling")
 
 
 func _stop_reeling() -> void:
 	reeling = false
 	state_machine.game.player_anim.play("idle_casted")
+	state_machine.game.sounds.stop_looping("reeling")
 
 
 func _on_cooldown_timeout() -> void:
 	var time := randf_range(pull_up_lower_bound, pull_up_upper_bound)
 	state_machine.game.ui.start_pull_up_event(time)
+	state_machine.game.sounds.play("pull_up_alert")
 
 
 func _pull_up_completed() -> void:

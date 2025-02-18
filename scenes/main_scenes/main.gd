@@ -36,6 +36,7 @@ const SESSION_SECONDS = 300
 
 @onready var ui: CanvasLayer = $UI
 @onready var player_anim: AnimationPlayer = $Player/Animation
+@onready var sounds: SoundBank = $SoundBank
 
 var session_seconds_remaining = SESSION_SECONDS : set = _set_session_seconds
 
@@ -137,3 +138,7 @@ func _set_bobber_distance(new_bobber_distance: float) -> void:
 func _set_session_seconds(new_session_seconds: int) -> void:
 	session_seconds_remaining = new_session_seconds
 	ui.set_session_seconds(session_seconds_remaining)
+
+
+func _on_bobber_cast_finished() -> void:
+	sounds.play("bobber_land")

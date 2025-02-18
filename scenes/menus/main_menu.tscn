@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bvcwltccekwin"]
+[gd_scene load_steps=6 format=3 uid="uid://bvcwltccekwin"]
 
 [ext_resource type="Script" path="res://scenes/menus/main_menu.gd" id="1_1ibqf"]
 [ext_resource type="Theme" uid="uid://cl7rjoolrg5ji" path="res://resources/default.tres" id="1_jatxy"]
 [ext_resource type="Texture2D" uid="uid://0qttmyu204t3" path="res://assets/textures/fishing_game_pack/background_blurred.png" id="1_m2lmt"]
 [ext_resource type="Theme" uid="uid://dhjgqdx0xo07q" path="res://resources/styles/themes/button/big_button.tres" id="3_ujfdm"]
+[ext_resource type="Script" path="res://scenes/ui/sound_button.gd" id="5_kxchp"]
 
 [node name="MainMenu" type="TextureRect"]
 self_modulate = Color(0.617455, 0.617455, 0.617455, 1)
@@ -48,5 +49,6 @@ custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
 theme = ExtResource("3_ujfdm")
 text = "Play"
+script = ExtResource("5_kxchp")
 
 [connection signal="pressed" from="Margin/VBox/Play" to="." method="_on_play_pressed"]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=36 format=3 uid="uid://bet1ebge4k8uj"]
+[gd_scene load_steps=38 format=3 uid="uid://bet1ebge4k8uj"]
 
 [ext_resource type="Theme" uid="uid://cl7rjoolrg5ji" path="res://resources/default.tres" id="1_2f4iu"]
 [ext_resource type="Script" path="res://scenes/ui/ui.gd" id="1_a70a8"]
 [ext_resource type="Script" path="res://scenes/ui/color_progress.gd" id="3_ec8tn"]
 [ext_resource type="Theme" uid="uid://dhjgqdx0xo07q" path="res://resources/styles/themes/button/big_button.tres" id="3_nmxfa"]
+[ext_resource type="Script" path="res://scenes/ui/sound_button.gd" id="4_gp4fn"]
 [ext_resource type="Script" path="res://scenes/ui/pull_up_box.gd" id="4_ksyrv"]
 [ext_resource type="Script" path="res://scenes/ui/fish_stats.gd" id="5_avxj6"]
 [ext_resource type="Script" path="res://scenes/ui/session_timer.gd" id="5_b58q4"]
@@ -13,6 +14,7 @@
 [ext_resource type="Script" path="res://scenes/ui/session_results.gd" id="7_wtygh"]
 [ext_resource type="Script" path="res://scenes/ui/catch_failed_text.gd" id="8_106yx"]
 [ext_resource type="Theme" uid="uid://clihegq77wleo" path="res://resources/styles/themes/button/med_button.tres" id="11_3ywn0"]
+[ext_resource type="AudioStream" uid="uid://bd6evmauqnbx3" path="res://assets/sound/results.wav" id="14_gp821"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_504xa"]
 bg_color = Color(0.219501, 0.219501, 0.219501, 1)
@@ -498,6 +500,7 @@ layout_mode = 2
 size_flags_vertical = 8
 theme = ExtResource("3_nmxfa")
 text = "Hold to cast"
+script = ExtResource("4_gp4fn")
 
 [node name="ReelButton" type="Button" parent="Margin"]
 visible = false
@@ -506,6 +509,7 @@ layout_mode = 2
 size_flags_vertical = 8
 theme = ExtResource("3_nmxfa")
 text = "Hold to Reel"
+script = ExtResource("4_gp4fn")
 
 [node name="PullUpBox" type="VBoxContainer" parent="Margin"]
 visible = false
@@ -691,6 +695,7 @@ layout_mode = 2
 size_flags_vertical = 8
 theme = ExtResource("3_nmxfa")
 text = "Continue"
+script = ExtResource("4_gp4fn")
 
 [node name="SessionResults" type="ColorRect" parent="."]
 visible = false
@@ -776,17 +781,22 @@ custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 theme = ExtResource("11_3ywn0")
 text = "Play Again"
+script = ExtResource("4_gp4fn")
 
 [node name="MainMenu" type="Button" parent="SessionResults/Margin/VBox/Buttons"]
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 theme = ExtResource("11_3ywn0")
 text = "Main Menu"
+script = ExtResource("4_gp4fn")
 
 [node name="Button" type="Button" parent="SessionResults"]
 layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
+
+[node name="Appear" type="AudioStreamPlayer" parent="SessionResults"]
+stream = ExtResource("14_gp821")
 
 [connection signal="button_down" from="Margin/CastButton" to="." method="_on_cast_button_down"]
 [connection signal="button_up" from="Margin/CastButton" to="." method="_on_cast_button_released"]

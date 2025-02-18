@@ -63,6 +63,7 @@ func _spawn_fish() -> void:
 func _on_fish_bite() -> void:
 	fish_bite.emit()
 	clear_fish()
+	$Bite.play()
 
 
 # This code will break as soon as the navigation polygon is not a perfect rectangle.
