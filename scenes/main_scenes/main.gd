@@ -57,7 +57,10 @@ func _ready() -> void:
 
 
 static func acceleration_to_distance(acceleration: float) -> float:
-	return remap(acceleration, MIN_ACELLERATION, MAX_ACELLERATION, MIN_DISTANCE, MAX_DISTANCE)
+	return clampf(
+		remap(acceleration, MIN_ACELLERATION, MAX_ACELLERATION, MIN_DISTANCE, MAX_DISTANCE),
+		MIN_DISTANCE, MAX_DISTANCE
+	)
 
 
 func be_ready_for_casting() -> void:
